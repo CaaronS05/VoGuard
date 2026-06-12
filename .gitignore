@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+.pytest_cache/
+
+uploads/*
+!uploads/.gitkeep
+
+data/*.json
+!data/sessions.json

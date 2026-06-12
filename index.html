@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VoGuard | Real-Time Voice Integrity</title>
+    <meta
+      name="description"
+      content="VoGuard is a patent-ready voice integrity layer for high-risk enterprise calls."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="is-loading">
+    <div class="site-loader" id="siteLoader" aria-live="polite" aria-label="Loading website">
+      <canvas id="loaderCanvas" aria-hidden="true"></canvas>
+      <div class="loader-copy">
+        
+        <div class="loader-track" aria-hidden="true">
+          <span id="loaderProgress"></span>
+        </div>
+        <small id="loaderPercent">0%</small>
+        <div class="loader-signals" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="VoGuard home">
+        <span class="brand-mark"></span>
+        VoGuard
+      </a>
+      <div class="nav-links">
+        <a href="#product">Product</a>
+        <a href="#technology">Technology</a>
+        <a href="#use-cases">Use Cases</a>
+        <a href="#demo">Live Demo</a>
+        <a href="#security">Security</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <button class="language-toggle" type="button" aria-label="Toggle language" aria-live="polite">
+          <span class="active" data-lang="id">ID</span>
+          <span data-lang="en">EN</span>
+        </button>
+        <a class="nav-cta" href="#contact">Request Demo</a>
+      </div>
+    </nav>
+
+    <main id="top" class="page-shell">
+      <section class="hero section-reveal" id="product">
+        <div class="hero-copy">
+          <h1>Deteksi Manipulasi Suara Real-Time</h1>
+          <p class="hero-support">Real-Time Voice Manipulation Detection for High-Risk Calls</p>
+          <p class="hero-body">
+            VoGuard menganalisis anomali sinyal audio, respons terhadap tantangan acak,
+            dan pola kealamian suara untuk membantu bank, contact center, dan platform
+            VoIP mengurangi risiko penipuan berbasis suara.
+          </p>
+          <div class="hero-buttons">
+            <a class="button button-primary" href="#demo">Try Live Detection</a>
+            <a class="button button-secondary" href="#contact">Request Enterprise Demo</a>
+          </div>
+        </div>
+
+        <div class="hero-visual interactive-panel" aria-label="Voice integrity dashboard preview">
+          <div class="panel-topline">
+            <span>Live Call Integrity</span>
+            <strong>Potential Voice Manipulation</strong>
+          </div>
+          <div class="risk-orbit">
+            <svg viewBox="0 0 240 240" aria-hidden="true">
+              <circle class="orbit-base" cx="120" cy="120" r="94"></circle>
+              <circle class="orbit-value" cx="120" cy="120" r="94"></circle>
+            </svg>
+            <div>
+              <span class="risk-number" data-target="78">0</span>
+              <small>Manipulation risk score</small>
+            </div>
+          </div>
+          <div class="waveform hero-wave" aria-hidden="true">
+            <span style="--i: 0"></span>
+            <span style="--i: 1"></span>
+            <span style="--i: 2"></span>
+            <span style="--i: 3"></span>
+            <span style="--i: 4"></span>
+            <span style="--i: 5"></span>
+            <span style="--i: 6"></span>
+            <span style="--i: 7"></span>
+            <span style="--i: 8"></span>
+            <span style="--i: 9"></span>
+            <span style="--i: 10"></span>
+            <span style="--i: 11"></span>
+            <span style="--i: 12"></span>
+            <span style="--i: 13"></span>
+            <span style="--i: 14"></span>
+            <span style="--i: 15"></span>
+            <span style="--i: 16"></span>
+            <span style="--i: 17"></span>
+          </div>
+          <div class="signal-grid">
+            <div>
+              <small>Detected signal</small>
+              <strong>Micro-jitter</strong>
+            </div>
+            <div>
+              <small>Detected signal</small>
+              <strong>Pitch discontinuity</strong>
+            </div>
+            <div>
+              <small>Detected signal</small>
+              <strong>Spectral artifact</strong>
+            </div>
+          </div>
+          <div class="challenge-card">
+            <span>Random challenge phrase</span>
+            <strong>“Ulangi: verifikasi tujuh biru”</strong>
+            <small>Response timer: <b>02.8s</b></small>
+          </div>
+        </div>
+      </section>
+
+      <section class="problem section-reveal">
+        <div class="wide-heading">
+          <h2>
+            Voice Fraud Is Becoming
+            <span class="inline-image image-bank"></span>
+            Harder to Hear
+          </h2>
+          <p>
+            Human ears are no longer enough. Pendengaran manusia tidak lagi cukup.
+          </p>
+        </div>
+        <div class="problem-grid">
+          <article class="hover-card image-card">
+            <div class="card-image image-clone"></div>
+            <h3>AI Voice Cloning</h3>
+            <p>Suara sintetis dapat terdengar natural, terutama pada panggilan singkat dan bernilai tinggi.</p>
+          </article>
+          <article class="hover-card image-card">
+            <div class="card-image image-operator"></div>
+            <h3>Voice Changer Abuse</h3>
+            <p>Manipulasi pitch, timbre, dan karakter suara dapat menyamarkan identitas serta niat penipu.</p>
+          </article>
+          <article class="hover-card image-card">
+            <div class="card-image image-replay"></div>
+            <h3>Replay Attack</h3>
+            <p>Cuplikan audio lama dapat diputar ulang untuk melewati verifikasi manual yang bergantung pada pendengaran.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="solution section-reveal">
+        <div class="section-kicker">A new layer of voice integrity</div>
+        <div class="bento-grid">
+          <article class="bento-card bento-large">
+            <div>
+              <h2>Passive Signal Analysis</h2>
+              <p>
+                Analisis multi-parameter membaca micro-latency, jitter, pitch continuity,
+                dan spectral consistency tanpa mengganggu percakapan.
+              </p>
+            </div>
+            <div class="mini-spectrogram" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </article>
+          <article class="bento-card bento-small">
+            <h3>Dynamic Challenge Response</h3>
+            <p>Tantangan verbal acak dibuat per sesi, lalu responsnya dibandingkan dengan sinyal sebelum tantangan.</p>
+          </article>
+          <article class="bento-card bento-small dark-card">
+            <h3>Risk-Based Mitigation</h3>
+            <p>Low risk untuk logging, medium risk untuk warning operator, high risk untuk manual verification.</p>
+          </article>
+          <article class="bento-card bento-medium">
+            <h3>Works for New Callers</h3>
+            <p>
+              Fokus pada integritas suara, bukan hanya identitas pembicara, sehingga dapat mendukung alur tanpa enrollment wajib.
+            </p>
+          </article>
+          <article class="bento-card bento-wide">
+            <h3>Forensic-Ready Signal Trail</h3>
+            <p>
+              Risk indication, manipulation score, anomaly checklist, dan log audit dikemas untuk workflow enterprise security.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="flow section-reveal">
+        <div class="flow-copy">
+          <h2>How VoGuard Reads a High-Risk Call</h2>
+          <p>
+            Audio masuk dianalisis secara pasif, diuji dengan tantangan dinamis saat dibutuhkan,
+            lalu diterjemahkan menjadi keputusan risiko yang bisa ditindaklanjuti.
+          </p>
+        </div>
+        <div class="flow-strip" aria-label="Voice integrity process">
+          <div>Audio Input</div>
+          <div>Signal Analysis</div>
+          <div>Dynamic Challenge</div>
+          <div>Response Evaluation</div>
+          <div>Risk Decision</div>
+          <div>Mitigation</div>
+        </div>
+      </section>
+
+      <section class="deep-dive" id="technology">
+        <div class="pin-layout">
+          <div class="pin-copy">
+            <h2>Built on Multi-Signal Voice Integrity Analysis</h2>
+            <p>
+              Sistem membaca beberapa petunjuk akustik sekaligus, lalu menilai apakah panggilan
+              menunjukkan indikasi manipulasi suara digital.
+            </p>
+          </div>
+          <div class="pin-cards">
+            <article class="tech-card hover-card">
+              <div class="tech-visual latency-lines"></div>
+              <h3>Micro-Latency Anomaly</h3>
+              <p>Detects timing irregularities that may appear when audio is routed through manipulation software.</p>
+            </article>
+            <article class="tech-card hover-card">
+              <div class="tech-visual pitch-curve"></div>
+              <h3>Pitch Continuity</h3>
+              <p>Tracks abrupt pitch transitions that are uncommon in natural speech during a continuous call.</p>
+            </article>
+            <article class="tech-card hover-card">
+              <div class="tech-visual spectrum-map"></div>
+              <h3>Spectral Consistency</h3>
+              <p>Evaluates spectral energy patterns for artifacts created by synthetic processing and replay sources.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="demo-section section-reveal" id="demo">
+        <div class="demo-heading">
+          <div>
+            <span class="section-kicker">Interactive Prototype Simulation</span>
+            <h2>Experience Real-Time Voice Risk Analysis</h2>
+          </div>
+          <p>
+            Simulasi frontend ini memperlihatkan bagaimana risk indication, challenge response,
+            dan anomaly checklist dapat muncul di workflow operator. Ini bukan klaim akurasi produksi.
+          </p>
+        </div>
+
+        <div class="demo-console">
+          <div class="demo-control">
+            <button class="button button-primary" id="startDemo" type="button">Start Microphone</button>
+            <p id="demoState">Ready to simulate a high-risk call integrity check.</p>
+          </div>
+          <div class="demo-main">
+            <div class="demo-waveform waveform" id="demoWaveform" aria-hidden="true">
+              <span style="--i: 0"></span>
+              <span style="--i: 1"></span>
+              <span style="--i: 2"></span>
+              <span style="--i: 3"></span>
+              <span style="--i: 4"></span>
+              <span style="--i: 5"></span>
+              <span style="--i: 6"></span>
+              <span style="--i: 7"></span>
+              <span style="--i: 8"></span>
+              <span style="--i: 9"></span>
+              <span style="--i: 10"></span>
+              <span style="--i: 11"></span>
+              <span style="--i: 12"></span>
+              <span style="--i: 13"></span>
+              <span style="--i: 14"></span>
+              <span style="--i: 15"></span>
+            </div>
+            <div class="demo-readout">
+              <div>
+                <span>Challenge phrase</span>
+                <strong id="challengePhrase">Tekan suara pada kata “aman tujuh”</strong>
+              </div>
+              <div>
+                <span>Response timer</span>
+                <strong id="timer">00.0s</strong>
+              </div>
+              <div>
+                <span>Risk status</span>
+                <strong id="riskStatus">Awaiting sample</strong>
+              </div>
+            </div>
+          </div>
+          <aside class="risk-panel">
+            <span>Manipulation score</span>
+            <strong id="score">0</strong>
+            <div class="score-track"><div id="scoreFill"></div></div>
+            <ul class="anomaly-list">
+              <li data-check="jitter">Micro-jitter indication</li>
+              <li data-check="pitch">Pitch discontinuity</li>
+              <li data-check="spectral">Spectral artifact</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="use-cases section-reveal" id="use-cases">
+        <div class="wide-heading">
+          <h2>Designed for High-Trust Voice Environments</h2>
+          <p>For organizations where a single voice call can approve money movement, account access, or sensitive decisions.</p>
+        </div>
+        <div class="accordion-row">
+          <article class="accordion-item active">
+            <span>Banking Call Verification</span>
+            <p>Risk indication during account recovery, loan confirmation, and high-value transaction approval.</p>
+          </article>
+          <article class="accordion-item">
+            <span>Contact Center Fraud Prevention</span>
+            <p>Operator warnings when a caller’s voice integrity signal becomes suspicious.</p>
+          </article>
+          <article class="accordion-item">
+            <span>VoIP Security Layer</span>
+            <p>API-ready voice risk screening for platforms that carry regulated communication.</p>
+          </article>
+          <article class="accordion-item">
+            <span>Enterprise Approval Calls</span>
+            <p>Additional assurance for remote approvals and executive voice instructions.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="comparison section-reveal">
+        <div class="comparison-copy">
+          <h2>Beyond Traditional Voice Biometrics</h2>
+          <p>
+            VoGuard complements identity workflows by checking whether a voice stream appears manipulated,
+            synthetic, replayed, or digitally processed.
+          </p>
+        </div>
+        <div class="comparison-grid">
+          <article>
+            <h3>Traditional Voice Biometrics</h3>
+            <ul>
+              <li>Requires voice enrollment</li>
+              <li>Focuses on speaker identity</li>
+              <li>Passive verification</li>
+              <li>Depends on stored user profile</li>
+            </ul>
+          </article>
+          <article class="voca-card">
+            <h3>VoGuard</h3>
+            <ul>
+              <li>No mandatory voiceprint enrollment</li>
+              <li>Focuses on voice integrity</li>
+              <li>Passive plus active verification</li>
+              <li>Works for new callers</li>
+              <li>Produces risk-based mitigation</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="privacy section-reveal" id="security">
+        <div class="privacy-visual">
+          <div class="glass-chip">Edge deployment ready</div>
+          <div class="glass-chip">Forensic logs</div>
+          <div class="glass-chip">Risk score workflow</div>
+        </div>
+        <div class="privacy-copy">
+          <h2>Security Without Permanent Voiceprint Dependency</h2>
+          <p>
+            Dirancang untuk mengurangi ketergantungan pada profil biometrik suara permanen,
+            dengan opsi edge atau on-premise deployment untuk kebutuhan enterprise.
+          </p>
+          <ul>
+            <li>Risk score and forensic logs for audit trails.</li>
+            <li>Operator-facing warning levels for practical mitigation.</li>
+            <li>Architecture suitable for enterprise security workflows.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="architecture section-reveal">
+        <div class="wide-heading">
+          <h2>Patent-Ready Voice Integrity Architecture</h2>
+          <p>
+            A clear modular path from live audio stream to decision engine and mitigation layer.
+          </p>
+        </div>
+        <div class="architecture-diagram">
+          <div>Audio Stream</div>
+          <div>Signal Analysis</div>
+          <div>Challenge Engine</div>
+          <div>Response Evaluation</div>
+          <div>Decision Engine</div>
+          <div>Mitigation Layer</div>
+        </div>
+      </section>
+
+      <section class="marquee-section" aria-label="Trusted environments">
+        <div class="marquee-track">
+          <span>Banks</span>
+          <span>Contact Centers</span>
+          <span>VoIP Platforms</span>
+          <span>Investor Diligence</span>
+          <span>Enterprise Security</span>
+          <span>Fraud Teams</span>
+        </div>
+        <div class="marquee-track reverse">
+          <span>Risk Indication</span>
+          <span>Challenge Response</span>
+          <span>Signal Integrity</span>
+          <span>Forensic Logs</span>
+          <span>Manual Verification</span>
+          <span>Operator Warning</span>
+        </div>
+      </section>
+
+      <section class="final-cta section-reveal" id="contact">
+        <h2>Secure the Next Generation of Voice Transactions</h2>
+        <p>
+          Partner with VoGuard to explore real-time voice fraud detection for banking,
+          contact center, and enterprise communication.
+        </p>
+        <div class="hero-buttons">
+          <a class="button button-primary" href="mailto:partnership@VoGuard.example">Request Demo</a>
+          <a class="button button-secondary" href="mailto:partners@VoGuard.example">Discuss Partnership</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <a class="brand" href="#top">
+          <span class="brand-mark"></span>
+          VoGuard
+        </a>
+        <p>Patent-ready prototype / Research-based technology</p>
+      </div>
+      <div class="footer-links">
+        <a href="#product">Product</a>
+        <a href="#technology">Technology</a>
+        <a href="#use-cases">Use Cases</a>
+        <a href="#security">Security</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

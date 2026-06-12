@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VoGuard MVP Dashboard</title>
+    <meta
+      name="description"
+      content="VoGuard local MVP dashboard for basic voice integrity signal analysis."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#overview" data-view-link="overview">
+          <span class="brand-mark"></span>
+          <span>VoGuard</span>
+        </a>
+        <nav class="side-nav" aria-label="Dashboard navigation">
+          <button class="active" data-view-link="overview" type="button">Overview</button>
+          <button data-view-link="live" type="button">Live Detection</button>
+          <button data-view-link="upload" type="button">Upload Audio</button>
+          <button data-view-link="call" type="button">Simulated Call</button>
+          <button data-view-link="reports" type="button">Reports</button>
+          <button data-view-link="log" type="button">Forensic Log</button>
+          <button data-view-link="dataset" type="button">Dataset</button>
+        </nav>
+        <div class="sidebar-note">
+          <span>Local prototype</span>
+          <p>Rule-based audio integrity signal analysis. No production accuracy claim.</p>
+        </div>
+      </aside>
+
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <span class="status-dot"></span>
+            <span id="healthStatus">Checking local API</span>
+          </div>
+          <div class="topbar-actions">
+            <span class="prototype-badge">Patent-ready MVP</span>
+            <button class="language-toggle" type="button" aria-label="Toggle language">
+              <span class="active" data-lang="id">ID</span>
+              <span data-lang="en">EN</span>
+            </button>
+          </div>
+        </header>
+
+        <section class="view active" id="overview" data-view="overview">
+          <div class="hero-panel">
+            <div class="hero-copy">
+              <p class="eyebrow">Enterprise voice integrity prototype</p>
+              <h1>Analyze voice integrity signals before sensitive calls become risk.</h1>
+              <p>
+                Record microphone audio or upload a WAV file, then VoGuard runs basic signal analysis for
+                manipulation risk indications, pitch instability, spectral artifacts, and audio quality issues.
+              </p>
+              <div class="hero-actions">
+                <button class="button button-primary" data-view-link="live" type="button">Start Live Detection</button>
+                <button class="button button-secondary" data-view-link="upload" type="button">Upload Audio</button>
+              </div>
+            </div>
+            <div class="hero-media">
+              <div class="radar-card">
+                <div class="risk-ring">
+                  <span id="overviewRisk">0</span>
+                </div>
+                <p>Latest prototype score</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="metric-grid dense-grid">
+            <article class="metric-card">
+              <span>Total sessions</span>
+              <strong id="totalSessions">0</strong>
+            </article>
+            <article class="metric-card">
+              <span>Average risk</span>
+              <strong id="averageRisk">0</strong>
+            </article>
+            <article class="metric-card">
+              <span>High-risk sessions</span>
+              <strong id="highRiskCount">0</strong>
+            </article>
+            <article class="metric-card">
+              <span>Last status</span>
+              <strong id="lastStatus">No analysis</strong>
+            </article>
+            <article class="command-card span-7">
+              <div>
+                <h2>Voice integrity command center</h2>
+                <p>Use recorded or uploaded audio to produce a prototype score, charts, anomaly list, and JSON report.</p>
+              </div>
+              <div class="quick-actions">
+                <button data-view-link="live" type="button">Start Live Detection</button>
+                <button data-view-link="upload" type="button">Upload Audio</button>
+                <button data-view-link="reports" type="button">View Reports</button>
+                <button data-view-link="log" type="button">View Forensic Log</button>
+              </div>
+            </article>
+            <article class="call-preview-card span-5">
+              <span>Simulated live call</span>
+              <h3>Unknown Caller / New Caller</h3>
+              <div class="integrity-meter"><span id="previewMeter"></span></div>
+              <p id="previewRecommendation">Awaiting latest analysis.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="live" data-view="live">
+          <div class="section-heading">
+            <h2>Record 5-10 seconds from the microphone.</h2>
+            <p>VoGuard exports browser audio as WAV and sends it to Flask for basic signal analysis.</p>
+          </div>
+          <div class="analysis-layout">
+            <article class="record-card">
+              <div class="record-orb" id="recordOrb">
+                <span id="recordTimer">00:00</span>
+              </div>
+              <div class="record-actions">
+                <button class="button button-primary" id="startRecording" type="button">Start Recording</button>
+                <button class="button button-secondary" id="stopRecording" type="button" disabled>Stop Recording</button>
+              </div>
+              <p id="recordState">Idle. Allow microphone access when prompted.</p>
+              <div class="live-wave" id="liveWave" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </article>
+            <article class="result-card">
+              <div class="score-block">
+                <span>Manipulation risk</span>
+                <strong id="resultScore">0</strong>
+                <b id="resultLevel" class="risk-badge">Awaiting sample</b>
+              </div>
+              <p id="resultRecommendation">Results will appear after recording or uploading audio.</p>
+              <ul id="anomalyList" class="anomaly-list"></ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="upload" data-view="upload">
+          <div class="section-heading">
+            <h2>Upload a voice sample for analysis.</h2>
+            <p>WAV is preferred. Other formats may work if your local Python audio stack supports them.</p>
+          </div>
+          <div class="upload-zone" id="uploadZone">
+            <input id="audioUpload" type="file" accept=".wav,.mp3,.m4a,.flac,.ogg,.webm,audio/*" />
+            <strong>Drop audio here or choose a file</strong>
+            <span id="uploadState">No file selected.</span>
+          </div>
+        </section>
+
+        <section class="view" id="call" data-view="call">
+          <div class="pinned-call-section">
+            <div class="pin-title">
+              <h2>Simulated banking call monitor.</h2>
+              <p>This panel uses the latest analysis result, not true streaming.</p>
+            </div>
+            <div class="call-stack">
+              <article class="call-card">
+                <span>Caller ID</span>
+                <strong>Unknown Caller / New Caller</strong>
+              </article>
+              <article class="call-card">
+                <span>Session status</span>
+                <strong>Monitoring</strong>
+              </article>
+              <article class="call-card">
+                <span>Audio integrity meter</span>
+                <div class="integrity-meter large"><span id="callMeter"></span></div>
+              </article>
+              <article class="call-card">
+                <span>Agent recommendation</span>
+                <strong id="callRecommendation">Continue monitoring until analysis completes.</strong>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="reports" data-view="reports">
+          <div class="section-heading">
+            <h2>Latest risk score report.</h2>
+            <p>Download the JSON report for local review or investor demo documentation.</p>
+          </div>
+          <div class="report-grid">
+            <article class="report-card">
+              <dl id="reportSummary"></dl>
+              <button class="button button-primary" id="downloadReport" type="button" disabled>Download JSON Report</button>
+            </article>
+            <article class="chart-card"><canvas id="waveformChart"></canvas></article>
+            <article class="chart-card"><canvas id="pitchChart"></canvas></article>
+            <article class="chart-card"><canvas id="spectralChart"></canvas></article>
+          </div>
+        </section>
+
+        <section class="view" id="log" data-view="log">
+          <div class="section-heading">
+            <h2>Forensic log and session history.</h2>
+            <p>Each analysis is stored locally in <code>data/sessions.json</code>.</p>
+          </div>
+          <div class="table-shell">
+            <table>
+              <thead>
+                <tr>
+                  <th>Date/time</th>
+                  <th>Source</th>
+                  <th>Risk score</th>
+                  <th>Risk level</th>
+                  <th>Duration</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="sessionTable"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="view" id="dataset" data-view="dataset">
+          <div class="dataset-panel">
+            <h2>Dataset folders are prepared for future model training.</h2>
+            <p>
+              This MVP uses rule-based signal analysis. Place future open-source real and manipulated
+              voice datasets into the local folders manually.
+            </p>
+            <div class="folder-grid">
+              <div><strong>datasets/real/</strong><span>Real voice samples</span></div>
+              <div><strong>datasets/manipulated/</strong><span>Manipulated voice samples</span></div>
+              <div><strong>datasets/README.md</strong><span>Limitations and future ML notes</span></div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </body>
+</html>
