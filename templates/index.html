@@ -135,14 +135,26 @@
                 <span></span><span></span><span></span><span></span><span></span><span></span>
               </div>
             </article>
-            <article class="result-card">
-              <div class="score-block">
-                <span>Manipulation risk</span>
-                <strong id="resultScore">0</strong>
-                <b id="resultLevel" class="risk-badge">Awaiting sample</b>
+            <article class="result-card" id="resultCard" aria-busy="false">
+              <div class="result-content" id="resultContent">
+                <div class="score-block">
+                  <span>Manipulation risk</span>
+                  <strong id="resultScore">0</strong>
+                  <b id="resultLevel" class="risk-badge">Awaiting sample</b>
+                </div>
+                <p id="resultRecommendation">Results will appear after recording or uploading audio.</p>
+                <ul id="anomalyList" class="anomaly-list"></ul>
               </div>
-              <p id="resultRecommendation">Results will appear after recording or uploading audio.</p>
-              <ul id="anomalyList" class="anomaly-list"></ul>
+              <div class="analysis-loader" id="analysisLoader" role="status" hidden>
+                <div class="analysis-loader-visual" aria-hidden="true">
+                  <span class="analysis-loader-ring"></span>
+                  <span class="analysis-loader-scan"></span>
+                  <span class="analysis-loader-core"></span>
+                </div>
+                <strong id="analysisLoaderTitle">Analysis in progress</strong>
+                <p id="analysisLoaderText">Checking voice integrity signals...</p>
+                <div class="analysis-progress" aria-hidden="true"><span></span></div>
+              </div>
             </article>
           </div>
         </section>

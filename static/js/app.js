@@ -8,6 +8,11 @@ const state = {
   chunks: [],
   recordingStartedAt: 0,
   timerInterval: null,
+  recordingRunId: 0,
+  analysisRunId: 0,
+  isAnalyzing: false,
+  hasLiveResult: false,
+  scoreAnimationFrame: null,
 };
 
 const els = {
@@ -34,6 +39,11 @@ const els = {
   resultScore: document.querySelector("#resultScore"),
   resultLevel: document.querySelector("#resultLevel"),
   resultRecommendation: document.querySelector("#resultRecommendation"),
+  resultCard: document.querySelector("#resultCard"),
+  resultContent: document.querySelector("#resultContent"),
+  analysisLoader: document.querySelector("#analysisLoader"),
+  analysisLoaderTitle: document.querySelector("#analysisLoaderTitle"),
+  analysisLoaderText: document.querySelector("#analysisLoaderText"),
   anomalyList: document.querySelector("#anomalyList"),
   callMeter: document.querySelector("#callMeter"),
   callRecommendation: document.querySelector("#callRecommendation"),
@@ -50,6 +60,14 @@ const copy = {
     idle: "Idle. Izinkan akses mikrofon saat diminta.",
     recording: "Merekam suara. Disarankan 5-10 detik.",
     processing: "Menganalisis sinyal integritas suara...",
+    converting: "Menyiapkan rekaman untuk dianalisis...",
+    analysisTitle: "Analisis sedang berjalan",
+    analysisDetail: "VoGuard memeriksa pitch, energi spektral, kestabilan temporal, dan kualitas audio.",
+    newSample: "Menunggu analisis baru",
+    waitingForStop: "Hasil sebelumnya disembunyikan. Stop rekaman untuk memulai analisis baru.",
+    analysisBusy: "Analisis lain masih berjalan. Tunggu hingga selesai.",
+    awaitingSample: "Menunggu sampel",
+    resultsPending: "Hasil akan muncul setelah rekaman atau upload audio selesai dianalisis.",
     completed: "Analisis selesai.",
     uploadReady: "Pilih file audio untuk dianalisis.",
     uploadProcessing: "Mengunggah dan menganalisis audio...",
@@ -61,6 +79,14 @@ const copy = {
     idle: "Idle. Allow microphone access when prompted.",
     recording: "Recording voice. 5-10 seconds is recommended.",
     processing: "Analyzing voice integrity signals...",
+    converting: "Preparing the recording for analysis...",
+    analysisTitle: "Analysis in progress",
+    analysisDetail: "VoGuard is checking pitch, spectral energy, temporal stability, and audio quality.",
+    newSample: "Awaiting new analysis",
+    waitingForStop: "The previous result is hidden. Stop recording to begin a new analysis.",
+    analysisBusy: "Another analysis is still running. Please wait until it finishes.",
+    awaitingSample: "Awaiting sample",
+    resultsPending: "Results will appear after the recording or uploaded audio has been analyzed.",
     completed: "Analysis completed.",
     uploadReady: "Choose an audio file for analysis.",
     uploadProcessing: "Uploading and analyzing audio...",
@@ -214,15 +240,20 @@ function riskClass(level) {
 }
 
 function animateNumber(element, target) {
+  if (state.scoreAnimationFrame) cancelAnimationFrame(state.scoreAnimationFrame);
   const start = Number(element.textContent) || 0;
   const started = performance.now();
   function tick(now) {
     const progress = Math.min((now - started) / 900, 1);
     const eased = 1 - Math.pow(1 - progress, 3);
     element.textContent = Math.round(start + (target - start) * eased);
-    if (progress < 1) requestAnimationFrame(tick);
+    if (progress < 1) {
+      state.scoreAnimationFrame = requestAnimationFrame(tick);
+    } else {
+      state.scoreAnimationFrame = null;
+    }
   }
-  requestAnimationFrame(tick);
+  state.scoreAnimationFrame = requestAnimationFrame(tick);
 }
 
 async function api(path, options) {
@@ -243,13 +274,13 @@ async function checkHealth() {
   }
 }
 
-async function loadSessions() {
+async function loadSessions({ hydrateLatest = false } = {}) {
   const data = await api("/api/sessions");
   state.sessions = data.sessions || [];
-  state.latest = state.sessions[0] || state.latest;
+  if (hydrateLatest || !state.latest) state.latest = state.sessions[0] || state.latest;
   renderOverview();
   renderSessionTable();
-  if (state.latest) renderResult(state.latest);
+  if (hydrateLatest && state.latest) renderResult(state.latest, { updateLiveCard: false });
 }
 
 function renderOverview() {
@@ -269,20 +300,49 @@ function renderOverview() {
   els.previewRecommendation.textContent = latest ? latest.recommendation : "Awaiting latest analysis.";
 }
 
-function renderResult(result) {
-  state.latest = result;
-  animateNumber(els.resultScore, result.risk_score);
-  els.resultLevel.textContent = result.risk_level;
-  els.resultLevel.className = `risk-badge ${riskClass(result.risk_level)}`;
-  els.resultRecommendation.textContent = result.recommendation;
-  els.anomalyList.innerHTML = "";
+function setAnalysisLoading(isLoading, statusText = t("processing")) {
+  state.isAnalyzing = isLoading;
+  els.resultCard.classList.toggle("is-analyzing", isLoading);
+  els.resultCard.setAttribute("aria-busy", String(isLoading));
+  els.resultContent.setAttribute("aria-hidden", String(isLoading));
+  els.analysisLoader.hidden = !isLoading;
+  els.analysisLoaderTitle.textContent = t("analysisTitle");
+  els.analysisLoaderText.textContent = statusText || t("analysisDetail");
+  els.audioUpload.disabled = isLoading;
+  els.uploadZone.classList.toggle("is-analyzing", isLoading);
+}
 
-  const anomalies = result.anomalies?.length ? result.anomalies : [t("noAnomaly")];
-  anomalies.forEach((anomaly) => {
-    const item = document.createElement("li");
-    item.textContent = anomaly;
-    els.anomalyList.appendChild(item);
-  });
+function resetLiveResult() {
+  if (state.scoreAnimationFrame) cancelAnimationFrame(state.scoreAnimationFrame);
+  state.scoreAnimationFrame = null;
+  state.hasLiveResult = false;
+  els.resultScore.textContent = "--";
+  els.resultLevel.textContent = t("newSample");
+  els.resultLevel.className = "risk-badge waiting";
+  els.resultRecommendation.textContent = t("waitingForStop");
+  els.anomalyList.innerHTML = "";
+  els.resultCard.classList.add("is-pending");
+}
+
+function renderResult(result, { updateLiveCard = true } = {}) {
+  state.latest = result;
+  if (updateLiveCard) {
+    state.hasLiveResult = true;
+    setAnalysisLoading(false);
+    els.resultCard.classList.remove("is-pending");
+    animateNumber(els.resultScore, result.risk_score);
+    els.resultLevel.textContent = result.risk_level;
+    els.resultLevel.className = `risk-badge ${riskClass(result.risk_level)}`;
+    els.resultRecommendation.textContent = result.recommendation;
+    els.anomalyList.innerHTML = "";
+
+    const anomalies = result.anomalies?.length ? result.anomalies : [t("noAnomaly")];
+    anomalies.forEach((anomaly) => {
+      const item = document.createElement("li");
+      item.textContent = anomaly;
+      els.anomalyList.appendChild(item);
+    });
+  }
 
   els.callMeter.style.width = `${Math.max(0, 100 - result.risk_score)}%`;
   els.callRecommendation.textContent = result.recommendation;
@@ -427,11 +487,13 @@ async function encodeRecordingToWav(webmBlob) {
 }
 
 async function analyzeBlob(blob, sourceType, filename) {
+  const analysisRunId = ++state.analysisRunId;
   const formData = new FormData();
   formData.append("audio", blob, filename);
   formData.append("source_type", sourceType);
 
   const data = await api("/api/analyze", { method: "POST", body: formData });
+  if (analysisRunId !== state.analysisRunId) return null;
   renderResult(data.result);
   await loadSessions();
   switchView("reports");
@@ -439,11 +501,21 @@ async function analyzeBlob(blob, sourceType, filename) {
 }
 
 async function startRecording() {
+  if (state.isAnalyzing || (state.recorder && state.recorder.state !== "inactive")) {
+    showToast(t("analysisBusy"));
+    return;
+  }
+
   try {
-    state.stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    state.chunks = [];
-    state.recorder = new MediaRecorder(state.stream);
+    const recordingRunId = ++state.recordingRunId;
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const chunks = [];
+    const recorder = new MediaRecorder(stream);
+    state.stream = stream;
+    state.chunks = chunks;
+    state.recorder = recorder;
     state.recordingStartedAt = Date.now();
+    resetLiveResult();
     els.startRecording.disabled = true;
     els.stopRecording.disabled = false;
     els.recordState.textContent = t("recording");
@@ -451,32 +523,45 @@ async function startRecording() {
     els.liveWave.classList.add("is-active");
     state.timerInterval = setInterval(updateRecordingTimer, 250);
 
-    state.recorder.ondataavailable = (event) => {
-      if (event.data.size > 0) state.chunks.push(event.data);
+    recorder.ondataavailable = (event) => {
+      if (event.data.size > 0) chunks.push(event.data);
     };
 
-    state.recorder.onstop = async () => {
+    recorder.onstop = async () => {
+      if (recordingRunId !== state.recordingRunId) return;
       clearInterval(state.timerInterval);
+      state.timerInterval = null;
       els.recordOrb.classList.remove("is-recording");
+      els.recordOrb.classList.add("is-processing");
       els.liveWave.classList.remove("is-active");
-      els.recordState.textContent = t("processing");
+      els.recordState.textContent = t("converting");
       els.stopRecording.disabled = true;
+      setAnalysisLoading(true, t("converting"));
 
       try {
-        const webmBlob = new Blob(state.chunks, { type: state.recorder.mimeType || "audio/webm" });
+        const webmBlob = new Blob(chunks, { type: recorder.mimeType || "audio/webm" });
+        if (!webmBlob.size) throw new Error("Rekaman audio kosong. Silakan rekam ulang.");
         const wavBlob = await encodeRecordingToWav(webmBlob);
+        els.recordState.textContent = t("processing");
+        setAnalysisLoading(true, t("analysisDetail"));
         await analyzeBlob(wavBlob, "microphone", "microphone-recording.wav");
         els.recordState.textContent = t("completed");
       } catch (error) {
+        setAnalysisLoading(false);
         showToast(error.message);
         els.recordState.textContent = error.message;
+        resetLiveResult();
+        els.resultRecommendation.textContent = error.message;
       } finally {
         els.startRecording.disabled = false;
-        state.stream?.getTracks().forEach((track) => track.stop());
+        els.recordOrb.classList.remove("is-processing");
+        stream.getTracks().forEach((track) => track.stop());
+        if (state.recorder === recorder) state.recorder = null;
+        if (state.stream === stream) state.stream = null;
       }
     };
 
-    state.recorder.start();
+    recorder.start();
   } catch (error) {
     showToast(`Microphone unavailable: ${error.message}`);
   }
@@ -484,6 +569,7 @@ async function startRecording() {
 
 function stopRecording() {
   if (state.recorder && state.recorder.state !== "inactive") {
+    els.stopRecording.disabled = true;
     state.recorder.stop();
   }
 }
@@ -497,13 +583,22 @@ function updateRecordingTimer() {
 
 async function handleUpload(file) {
   if (!file) return;
+  if (state.isAnalyzing) {
+    showToast(t("analysisBusy"));
+    return;
+  }
+  resetLiveResult();
+  setAnalysisLoading(true, t("uploadProcessing"));
   els.uploadState.textContent = t("uploadProcessing");
   try {
     await analyzeBlob(file, "upload", file.name);
     els.uploadState.textContent = `${file.name} analyzed.`;
   } catch (error) {
+    setAnalysisLoading(false);
     els.uploadState.textContent = error.message;
     showToast(error.message);
+  } finally {
+    els.audioUpload.value = "";
   }
 }
 
@@ -516,7 +611,22 @@ function setLanguage(lang) {
     item.classList.toggle("active", item.dataset.lang === lang);
   });
   els.healthStatus.textContent = els.healthStatus.textContent.includes("API") ? t("apiReady") : els.healthStatus.textContent;
-  if (!state.recorder || state.recorder.state === "inactive") els.recordState.textContent = t("idle");
+  const isRecording = state.recorder && state.recorder.state === "recording";
+  if (state.isAnalyzing) {
+    els.recordState.textContent = t("processing");
+    els.analysisLoaderTitle.textContent = t("analysisTitle");
+    els.analysisLoaderText.textContent = t("analysisDetail");
+  } else if (isRecording) {
+    els.recordState.textContent = t("recording");
+    els.resultLevel.textContent = t("newSample");
+    els.resultRecommendation.textContent = t("waitingForStop");
+  } else {
+    els.recordState.textContent = t("idle");
+    if (!state.hasLiveResult) {
+      els.resultLevel.textContent = t("awaitingSample");
+      els.resultRecommendation.textContent = t("resultsPending");
+    }
+  }
   if (!state.latest) {
     els.uploadState.textContent = t("uploadReady");
   }
@@ -595,5 +705,5 @@ els.downloadReport.addEventListener("click", () => {
 
 setLanguage(state.lang);
 checkHealth();
-loadSessions().catch((error) => showToast(error.message));
+loadSessions({ hydrateLatest: true }).catch((error) => showToast(error.message));
 initMotion();

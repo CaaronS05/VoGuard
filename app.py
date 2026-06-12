@@ -36,7 +36,20 @@ def error_response(message: str, status: int = 400):
 
 
 @app.route("/")
-def index():
+def landing():
+    return send_file(ROOT / "index.html")
+
+
+@app.route("/landing/<path:filename>")
+def landing_asset(filename: str):
+    allowed_assets = {"style.css", "script.js"}
+    if filename not in allowed_assets:
+        return error_response("Landing asset not found.", 404)
+    return send_file(ROOT / filename)
+
+
+@app.route("/dashboard")
+def dashboard():
     return render_template("index.html")
 
 

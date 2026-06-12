@@ -356,7 +356,7 @@ const textBindings = [
   [".hero-copy h1", "heroTitle"],
   [".hero-support", "heroSupport"],
   [".hero-body", "heroBody"],
-  [".hero-buttons .button-primary[href='#demo']", "tryDetection"],
+  [".hero-buttons .button-primary[href='/dashboard']", "tryDetection"],
   [".hero-buttons .button-secondary[href='#contact']", "enterpriseDemo"],
   [".panel-topline span", "panelLive"],
   [".panel-topline strong", "panelRisk"],

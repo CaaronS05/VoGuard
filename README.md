@@ -35,7 +35,7 @@ This is an MVP prototype, not a production-grade deepfake detector or forensic s
 - Windows: klik dua kali `Run VoGuard.bat`.
 - Linux: jalankan `./run-voguard.sh`.
 
-Launcher membuat `.venv`, memasang dependensi pada run pertama, menjalankan aplikasi lokal, dan membuka browser secara otomatis. Python 3.10+ tetap diperlukan, tetapi Docker dan perintah backend manual tidak diperlukan.
+Launcher membuat `.venv`, memperbarui installer paket, memasang seluruh dependensi, memeriksanya, menjalankan aplikasi lokal, dan membuka browser secara otomatis. Windows akan mencoba memasang Python 3.12 melalui `winget` jika versi yang kompatibel belum tersedia. Gunakan Python 3.10-3.12; dependency versi saat ini belum mendukung Python 3.13+. Docker dan perintah backend manual tidak diperlukan.
 
 ### Manual
 
@@ -59,6 +59,12 @@ Open:
 
 ```text
 http://127.0.0.1:5055
+```
+
+Alamat tersebut membuka landing page. Dashboard analisis tersedia di:
+
+```text
+http://127.0.0.1:5055/dashboard
 ```
 
 ## Folder Structure
