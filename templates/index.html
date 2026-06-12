@@ -160,39 +160,108 @@
         </section>
 
         <section class="view" id="upload" data-view="upload">
-          <div class="section-heading">
-            <h2>Upload a voice sample for analysis.</h2>
-            <p>WAV is preferred. Other formats may work if your local Python audio stack supports them.</p>
+          <div class="section-heading upload-heading">
+            <h2>Upload audio. Get a clear integrity signal.</h2>
+            <p>Choose one voice sample and VoGuard will inspect pitch, spectral energy, temporal stability, and recording quality.</p>
           </div>
-          <div class="upload-zone" id="uploadZone">
-            <input id="audioUpload" type="file" accept=".wav,.mp3,.m4a,.flac,.ogg,.webm,audio/*" />
-            <strong>Drop audio here or choose a file</strong>
-            <span id="uploadState">No file selected.</span>
+          <div class="upload-workspace dense-grid">
+            <label class="upload-zone" id="uploadZone" for="audioUpload">
+              <input id="audioUpload" type="file" accept=".wav,.mp3,.m4a,.flac,.ogg,.webm,audio/*" />
+              <span class="upload-orbit" aria-hidden="true">
+                <i></i><i></i><i></i>
+                <b></b>
+              </span>
+              <span class="upload-kicker">Audio integrity intake</span>
+              <strong>Drop a voice sample here.</strong>
+              <span class="upload-copy">Or browse a local audio file. Nothing is uploaded outside this device.</span>
+              <span class="upload-button">Choose audio file</span>
+            </label>
+
+            <aside class="upload-side-panel">
+              <div class="upload-file-card">
+                <span class="upload-file-icon" aria-hidden="true"></span>
+                <div>
+                  <small>Selected sample</small>
+                  <strong id="uploadFileName">Belum ada file</strong>
+                  <span id="uploadState">Siap menerima sampel suara.</span>
+                </div>
+              </div>
+              <div class="upload-signal-card" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <div class="upload-specs">
+                <div><span>Preferred</span><strong>WAV</strong></div>
+                <div><span>Minimum</span><strong>5 sec</strong></div>
+                <div><span>Processing</span><strong>Local</strong></div>
+              </div>
+              <button class="button button-secondary upload-live-link" data-view-link="live" type="button">Record with microphone instead</button>
+            </aside>
+          </div>
+          <div class="format-marquee" aria-hidden="true">
+            <div>WAV / MP3 / M4A / FLAC / OGG / WEBM / LOCAL PROCESSING / WAV / MP3 / M4A / FLAC / OGG / WEBM / LOCAL PROCESSING /</div>
           </div>
         </section>
 
         <section class="view" id="call" data-view="call">
-          <div class="pinned-call-section">
-            <div class="pin-title">
-              <h2>Simulated banking call monitor.</h2>
-              <p>This panel uses the latest analysis result, not true streaming.</p>
-            </div>
-            <div class="call-stack">
-              <article class="call-card">
-                <span>Caller ID</span>
-                <strong>Unknown Caller / New Caller</strong>
-              </article>
-              <article class="call-card">
+          <div class="section-heading call-heading">
+            <h2>One signal. A faster call decision.</h2>
+            <p>This simulation translates the latest analysis into a clear operational recommendation for a call agent.</p>
+          </div>
+          <div class="call-command-grid dense-grid">
+            <article class="call-identity-panel">
+              <div class="call-identity-topline">
+                <span class="call-live-dot"></span>
+                <span>Latest analyzed session</span>
+                <b id="callTimestamp">Awaiting data</b>
+              </div>
+              <div class="caller-portrait" aria-hidden="true">
+                <span></span>
+              </div>
+              <div class="caller-copy">
+                <span>Caller identity</span>
+                <h3>Unknown Caller</h3>
+                <p id="callSessionId">No analyzed session connected yet.</p>
+              </div>
+              <div class="call-waveform" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <button class="button call-analyze-button" data-view-link="live" type="button">Run a new live analysis</button>
+            </article>
+
+            <article class="call-score-panel">
+              <div class="call-score-copy">
+                <span>Audio integrity</span>
+                <strong id="callIntegrityScore">0</strong>
+                <b>/100</b>
+              </div>
+              <div class="call-score-orbit" aria-hidden="true"><span></span></div>
+              <div class="call-risk-line">
+                <span>Current assessment</span>
+                <strong id="callRiskLevel">Menunggu analisis</strong>
+              </div>
+            </article>
+
+            <div class="call-decision-stack">
+              <article class="call-card call-status-card">
                 <span>Session status</span>
-                <strong>Monitoring</strong>
+                <strong id="callSessionStatus">Siaga</strong>
+                <p>Monitoring uses the most recent completed analysis.</p>
               </article>
-              <article class="call-card">
-                <span>Audio integrity meter</span>
+              <article class="call-card call-meter-card">
+                <div>
+                  <span>Trusted signal</span>
+                  <strong id="callMeterLabel">0%</strong>
+                </div>
                 <div class="integrity-meter large"><span id="callMeter"></span></div>
               </article>
-              <article class="call-card">
-                <span>Agent recommendation</span>
-                <strong id="callRecommendation">Continue monitoring until analysis completes.</strong>
+              <article class="call-card call-recommendation-card">
+                <span>Recommended agent action</span>
+                <strong id="callRecommendation">Selesaikan analisis sebelum mengambil keputusan sensitif.</strong>
               </article>
             </div>
           </div>

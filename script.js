@@ -47,6 +47,7 @@ const translations = {
     navUseCases: "Use Case",
     navDemo: "Live Demo",
     navSecurity: "Keamanan",
+    navPricing: "Harga",
     navContact: "Kontak",
     requestDemo: "Minta Demo",
     heroEyebrow: "Proteksi integritas suara real-time untuk panggilan bernilai tinggi.",
@@ -173,6 +174,21 @@ const translations = {
     signalIntegrity: "Integritas Sinyal",
     manualVerification: "Verifikasi Manual",
     operatorWarning: "Peringatan Operator",
+    pricingKicker: "Pilih sesuai skala penggunaan",
+    pricingTitle: "Mulai gratis. Tingkatkan saat kebutuhan keamanan bertambah.",
+    pricingBody: "Seluruh paket menggunakan fondasi analisis integritas suara VoGuard. Upgrade kapan saja ketika tim, volume analisis, atau kebutuhan audit berkembang.",
+    pricingFreeButton: "Mulai gratis",
+    pricingPremiumButton: "Mulai Premium",
+    pricingProfessionalButton: "Mulai Professional",
+    pricingNote: "Butuh lebih dari 5 pengguna atau deployment on-premise?",
+    pricingEnterpriseButton: "Bicarakan paket Enterprise",
+    supportTitle: "Customer Service",
+    supportOnline: "Online · balasan cepat",
+    supportAgent: "VoGuard Support",
+    supportOnlineNow: "Online sekarang",
+    supportGreeting: "Halo, saya asisten VoGuard. Ada yang bisa saya bantu terkait paket, demo, atau integrasi?",
+    supportPlaceholder: "Tulis pertanyaan Anda...",
+    supportPrivacy: "Percakapan disimpan hanya di browser perangkat ini.",
     finalTitle: "Amankan Generasi Berikutnya Transaksi Suara",
     finalBody: "Bermitra dengan VoGuard untuk mengeksplorasi deteksi fraud suara real-time bagi perbankan, contact center, dan komunikasi enterprise.",
     discussPartnership: "Diskusikan Kemitraan",
@@ -186,6 +202,7 @@ const translations = {
     navUseCases: "Use Cases",
     navDemo: "Live Demo",
     navSecurity: "Security",
+    navPricing: "Pricing",
     navContact: "Contact",
     requestDemo: "Request Demo",
     heroEyebrow: "Real-time voice integrity protection for high-value calls.",
@@ -312,11 +329,71 @@ const translations = {
     signalIntegrity: "Signal Integrity",
     manualVerification: "Manual Verification",
     operatorWarning: "Operator Warning",
+    pricingKicker: "Choose a plan for your scale",
+    pricingTitle: "Start free. Upgrade as your security needs grow.",
+    pricingBody: "Every plan uses VoGuard's voice-integrity analysis foundation. Upgrade whenever your team, analysis volume, or audit needs expand.",
+    pricingFreeButton: "Start free",
+    pricingPremiumButton: "Start Premium",
+    pricingProfessionalButton: "Start Professional",
+    pricingNote: "Need more than 5 users or an on-premise deployment?",
+    pricingEnterpriseButton: "Discuss Enterprise plans",
+    supportTitle: "Customer Service",
+    supportOnline: "Online · fast response",
+    supportAgent: "VoGuard Support",
+    supportOnlineNow: "Online now",
+    supportGreeting: "Hello, I am the VoGuard assistant. How can I help with plans, demos, or integrations?",
+    supportPlaceholder: "Write your question...",
+    supportPrivacy: "This conversation is stored only in this browser.",
     finalTitle: "Secure the Next Generation of Voice Transactions",
     finalBody: "Partner with VoGuard to explore real-time voice fraud detection for banking, contact center, and enterprise communication.",
     discussPartnership: "Discuss Partnership",
     footerBody: "Patent-ready prototype / Research-based technology"
   }
+};
+
+const pricingTranslations = {
+  id: [
+    [".price-free .plan-label", "Gratis"],
+    [".price-free h3", "Free plan"],
+    [".price-free .price-card-head > p", "Untuk pengguna umum dan percobaan awal."],
+    [".price-free .plan-price span", "Selamanya gratis"],
+    [".price-premium .popular-line span", "Paling populer"],
+    [".price-premium .popular-line small", "Rekomendasi individu"],
+    [".price-premium .price-card-head > p", "Freelancer, content creator, influencer, dan pengguna profesional."],
+    [".price-premium .plan-price span", "per bulan · tagihan bulanan"],
+    [".price-professional .plan-label", "Enterprise"],
+    [".price-professional .price-card-head > p", "Konsultan, notaris, agen properti, perusahaan, dan tim operasional."],
+    [".price-professional .plan-price span", "per bulan · hingga 5 akun pengguna"],
+    [".price-free .plan-feature-group:nth-child(2) > span", "Deteksi dasar"],
+    [".price-free .plan-feature-group:nth-child(3) > span", "Analisis sinyal"],
+    [".price-free .plan-feature-group:nth-child(4) > span", "Laporan & integrasi"],
+    [".price-premium .plan-feature-group:nth-child(3) > span", "Deteksi lengkap"],
+    [".price-premium .plan-feature-group:nth-child(4) > span", "Analisis sinyal"],
+    [".price-premium .plan-feature-group:nth-child(5) > span", "Laporan & integrasi"],
+    [".price-professional .plan-feature-group:nth-child(2) > span", "Semua fitur Premium, ditambah"],
+    [".price-professional .plan-feature-group:nth-child(3) > span", "Integrasi & kepatuhan"]
+  ],
+  en: [
+    [".price-free .plan-label", "Free"],
+    [".price-free h3", "Free plan"],
+    [".price-free .price-card-head > p", "For general users and initial evaluation."],
+    [".price-free .plan-price span", "Free forever"],
+    [".price-premium .popular-line span", "Most popular"],
+    [".price-premium .popular-line small", "Individual recommendation"],
+    [".price-premium .price-card-head > p", "For freelancers, content creators, influencers, and professional users."],
+    [".price-premium .plan-price span", "per month · billed monthly"],
+    [".price-professional .plan-label", "Enterprise"],
+    [".price-professional .price-card-head > p", "For consultants, notaries, property agents, companies, and operational teams."],
+    [".price-professional .plan-price span", "per month · up to 5 user accounts"],
+    [".price-free .plan-feature-group:nth-child(2) > span", "Basic detection"],
+    [".price-free .plan-feature-group:nth-child(3) > span", "Signal analysis"],
+    [".price-free .plan-feature-group:nth-child(4) > span", "Reports & integration"],
+    [".price-premium .plan-feature-group:nth-child(3) > span", "Complete detection"],
+    [".price-premium .plan-feature-group:nth-child(4) > span", "Signal analysis"],
+    [".price-premium .plan-feature-group:nth-child(5) > span", "Reports & integration"],
+    [".price-professional .plan-feature-group:nth-child(2) > span", "Everything in Premium, plus"],
+    [".price-professional .plan-feature-group:nth-child(3) > span", "Integration & compliance"]
+  ]
 };
 
 const startDemo = document.querySelector("#startDemo");
@@ -334,6 +411,16 @@ const siteLoader = document.querySelector("#siteLoader");
 const loaderCanvas = document.querySelector("#loaderCanvas");
 const loaderProgress = document.querySelector("#loaderProgress");
 const loaderPercent = document.querySelector("#loaderPercent");
+const supportWidget = document.querySelector("#supportWidget");
+const supportLauncher = document.querySelector("#supportLauncher");
+const supportPanel = document.querySelector("#supportPanel");
+const supportClose = document.querySelector("#supportClose");
+const supportMessages = document.querySelector("#supportMessages");
+const supportQuickReplies = document.querySelector("#supportQuickReplies");
+const supportForm = document.querySelector("#supportForm");
+const supportInput = document.querySelector("#supportInput");
+const supportUnread = document.querySelector("#supportUnread");
+const priceContactTriggers = document.querySelectorAll(".price-contact-trigger");
 
 let activeLanguage = localStorage.getItem("voGuardLanguage") || "id";
 let demoButtonKey = "startMic";
@@ -343,6 +430,9 @@ let activePhrase = null;
 let demoHasRun = false;
 let demoRunning = false;
 let pageAnimationsStarted = false;
+let supportHistory = [];
+let supportReplyTimer = null;
+let supportTypingElement = null;
 
 const textBindings = [
   [".nav-links a:nth-child(1), .footer-links a:nth-child(1)", "navProduct"],
@@ -350,7 +440,8 @@ const textBindings = [
   [".nav-links a:nth-child(3), .footer-links a:nth-child(3)", "navUseCases"],
   [".nav-links a:nth-child(4)", "navDemo"],
   [".nav-links a:nth-child(5), .footer-links a:nth-child(4)", "navSecurity"],
-  [".nav-links a:nth-child(6), .footer-links a:nth-child(5)", "navContact"],
+  [".nav-links a:nth-child(6), .footer-links a:nth-child(5)", "navPricing"],
+  [".nav-links a:nth-child(7), .footer-links a:nth-child(6)", "navContact"],
   [".nav-cta", "requestDemo"],
   [".hero-copy .eyebrow", "heroEyebrow"],
   [".hero-copy h1", "heroTitle"],
@@ -462,6 +553,19 @@ const textBindings = [
   [".marquee-track:nth-child(2) span:nth-child(4)", "forensicLogs"],
   [".marquee-track:nth-child(2) span:nth-child(5)", "manualVerification"],
   [".marquee-track:nth-child(2) span:nth-child(6)", "operatorWarning"],
+  [".pricing-heading .section-kicker", "pricingKicker"],
+  [".pricing-heading h2", "pricingTitle"],
+  [".pricing-heading p", "pricingBody"],
+  [".price-free .price-button", "pricingFreeButton"],
+  [".price-premium .price-button", "pricingPremiumButton"],
+  [".price-professional .price-button", "pricingProfessionalButton"],
+  [".pricing-note > span", "pricingNote"],
+  [".pricing-note button", "pricingEnterpriseButton"],
+  [".support-launcher-copy strong", "supportTitle"],
+  [".support-launcher-copy small", "supportOnline"],
+  [".support-agent strong", "supportAgent"],
+  [".support-agent div > span", "supportOnlineNow"],
+  [".support-privacy", "supportPrivacy"],
   [".final-cta h2", "finalTitle"],
   [".final-cta p", "finalBody"],
   [".final-cta .button-primary", "requestDemo"],
@@ -487,6 +591,11 @@ function updateBoundText() {
   document.querySelectorAll(".challenge-card small").forEach((element) => {
     element.innerHTML = `${getText("responseTimer")} <b>02.8s</b>`;
   });
+
+  (pricingTranslations[activeLanguage] || pricingTranslations.id).forEach(([selector, value]) => {
+    const element = document.querySelector(selector);
+    if (element) element.textContent = value;
+  });
 }
 
 function updateDemoText() {
@@ -498,6 +607,36 @@ function updateDemoText() {
     challengePhrase.textContent = activePhrase[activeLanguage];
   } else if (!demoHasRun) {
     challengePhrase.textContent = getText("challengeInitial");
+  }
+}
+
+function updateSupportText() {
+  if (!supportWidget) return;
+  supportInput.placeholder = getText("supportPlaceholder");
+  supportClose.setAttribute("aria-label", activeLanguage === "id" ? "Tutup customer service" : "Close customer service");
+
+  const quickReplyContent = activeLanguage === "id"
+    ? [
+        ["Bandingkan paket", "Saya ingin mengetahui perbedaan setiap paket."],
+        ["Jadwalkan demo", "Saya ingin menjadwalkan demo VoGuard."],
+        ["Integrasi API", "Apakah VoGuard mendukung integrasi API?"]
+      ]
+    : [
+        ["Compare plans", "I want to understand the differences between each plan."],
+        ["Schedule a demo", "I want to schedule a VoGuard demo."],
+        ["API integration", "Does VoGuard support API integration?"]
+      ];
+
+  supportQuickReplies.querySelectorAll("button").forEach((button, index) => {
+    const content = quickReplyContent[index];
+    if (!content) return;
+    button.textContent = content[0];
+    button.dataset.message = content[1];
+  });
+
+  if (!supportHistory.length) {
+    const greeting = supportMessages.querySelector(".support-message.agent span");
+    if (greeting) greeting.textContent = getText("supportGreeting");
   }
 }
 
@@ -522,6 +661,125 @@ function setLanguage(language) {
 
   updateBoundText();
   updateDemoText();
+  updateSupportText();
+}
+
+function supportTime() {
+  return new Intl.DateTimeFormat(activeLanguage === "id" ? "id-ID" : "en-US", {
+    hour: "2-digit",
+    minute: "2-digit"
+  }).format(new Date());
+}
+
+function saveSupportHistory() {
+  try {
+    localStorage.setItem("voGuardSupportHistory", JSON.stringify(supportHistory.slice(-30)));
+  } catch {
+    // The chat remains functional when browser storage is unavailable.
+  }
+}
+
+function appendSupportMessage(role, message, { persist = true } = {}) {
+  const item = document.createElement("div");
+  item.className = `support-message ${role}`;
+
+  const content = document.createElement("span");
+  content.textContent = message;
+  item.appendChild(content);
+
+  const time = document.createElement("small");
+  time.textContent = supportTime();
+  item.appendChild(time);
+  supportMessages.appendChild(item);
+  supportMessages.scrollTop = supportMessages.scrollHeight;
+
+  if (persist) {
+    supportHistory.push({ role, message });
+    saveSupportHistory();
+  }
+
+  return item;
+}
+
+function loadSupportHistory() {
+  try {
+    const stored = JSON.parse(localStorage.getItem("voGuardSupportHistory") || "[]");
+    supportHistory = Array.isArray(stored)
+      ? stored.filter((item) => item && ["agent", "user"].includes(item.role) && typeof item.message === "string").slice(-30)
+      : [];
+  } catch {
+    supportHistory = [];
+  }
+
+  if (!supportHistory.length) return;
+  supportMessages.innerHTML = "";
+  supportHistory.forEach((item) => appendSupportMessage(item.role, item.message, { persist: false }));
+}
+
+function getSupportReply(message) {
+  const normalized = message.toLowerCase();
+  const isEnglish = activeLanguage === "en";
+
+  if (/harga|paket|price|plan|premium|professional|gratis|free/.test(normalized)) {
+    return isEnglish
+      ? "Free is suitable for initial testing, Premium provides unlimited analysis and complete signal checks, while Professional adds 5 user accounts, a centralized dashboard, PDF exports, API access, audit trails, and priority support."
+      : "Free cocok untuk percobaan awal, Premium menyediakan analisis tanpa batas dan pemeriksaan sinyal lengkap, sedangkan Professional menambah 5 akun, dashboard terpusat, export PDF, API, audit trail, dan dukungan prioritas.";
+  }
+
+  if (/demo|uji|coba|trial|jadwal|schedule/.test(normalized)) {
+    return isEnglish
+      ? "You can try the local analysis immediately through Try Live Detection. For an enterprise walkthrough, use Request Demo in the navigation or tell me the use case you want to evaluate."
+      : "Anda dapat mencoba analisis lokal melalui Coba Deteksi Langsung. Untuk walkthrough enterprise, gunakan Minta Demo di navigasi atau jelaskan use case yang ingin dievaluasi.";
+  }
+
+  if (/api|integrasi|integration|rest|webhook/.test(normalized)) {
+    return isEnglish
+      ? "API and audit-trail capabilities are included in Professional and custom Enterprise plans. The integration can be discussed around call flow, risk scores, forensic logs, and deployment requirements."
+      : "Kemampuan API dan audit trail tersedia pada Professional dan paket Enterprise khusus. Integrasi dapat dibahas berdasarkan alur panggilan, risk score, log forensik, dan kebutuhan deployment.";
+  }
+
+  if (/enterprise|on-prem|perusahaan|company|tim|team|sla/.test(normalized)) {
+    return isEnglish
+      ? "For teams larger than 5 users, on-premise deployment, or a custom SLA, choose the Enterprise discussion option. Prepare your user count, monthly call volume, and preferred deployment model."
+      : "Untuk tim lebih dari 5 pengguna, deployment on-premise, atau SLA khusus, pilih diskusi Enterprise. Siapkan jumlah pengguna, volume panggilan bulanan, dan model deployment yang diinginkan.";
+  }
+
+  if (/keamanan|security|privasi|privacy|data/.test(normalized)) {
+    return isEnglish
+      ? "VoGuard is designed for local, edge, or on-premise workflows. This customer-service conversation itself is stored only in your browser and is not transmitted to an external service."
+      : "VoGuard dirancang untuk workflow lokal, edge, atau on-premise. Percakapan customer service ini sendiri hanya tersimpan di browser dan tidak dikirim ke layanan eksternal.";
+  }
+
+  return isEnglish
+    ? "I can help explain plans, demo access, API integration, security, or Enterprise deployment. Please include the topic and your intended use case."
+    : "Saya dapat membantu menjelaskan paket, akses demo, integrasi API, keamanan, atau deployment Enterprise. Sertakan topik dan use case yang ingin digunakan.";
+}
+
+function setSupportOpen(isOpen, { focus = true } = {}) {
+  supportWidget.classList.toggle("is-open", isOpen);
+  supportLauncher.setAttribute("aria-expanded", String(isOpen));
+  supportPanel.setAttribute("aria-hidden", String(!isOpen));
+  supportUnread.hidden = true;
+  if (isOpen && focus) setTimeout(() => supportInput.focus(), 220);
+}
+
+function sendSupportMessage(message) {
+  const cleanMessage = message.trim();
+  if (!cleanMessage) return;
+
+  appendSupportMessage("user", cleanMessage);
+  supportInput.value = "";
+  supportInput.style.height = "auto";
+
+  if (supportReplyTimer) clearTimeout(supportReplyTimer);
+  if (supportTypingElement) supportTypingElement.remove();
+  supportTypingElement = appendSupportMessage("agent typing", "", { persist: false });
+  supportReplyTimer = setTimeout(() => {
+    supportTypingElement?.remove();
+    supportTypingElement = null;
+    appendSupportMessage("agent", getSupportReply(cleanMessage));
+    if (!supportWidget.classList.contains("is-open")) supportUnread.hidden = false;
+  }, 650);
 }
 
 function animateNumber(element, target, duration = 1200) {
@@ -892,6 +1150,61 @@ accordionItems.forEach((item) => {
 });
 
 startDemo.addEventListener("click", runDemo);
+supportLauncher.addEventListener("click", () => {
+  setSupportOpen(!supportWidget.classList.contains("is-open"));
+});
+
+supportClose.addEventListener("click", () => {
+  setSupportOpen(false, { focus: false });
+  supportLauncher.focus();
+});
+
+supportForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  sendSupportMessage(supportInput.value);
+});
+
+supportInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" && !event.shiftKey) {
+    event.preventDefault();
+    supportForm.requestSubmit();
+  }
+});
+
+supportInput.addEventListener("input", () => {
+  supportInput.style.height = "auto";
+  supportInput.style.height = `${Math.min(supportInput.scrollHeight, 110)}px`;
+});
+
+supportQuickReplies.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-message]");
+  if (!button) return;
+  sendSupportMessage(button.dataset.message);
+});
+
+priceContactTriggers.forEach((button) => {
+  button.addEventListener("click", () => {
+    setSupportOpen(true);
+    const message = activeLanguage === "id"
+      ? `Saya tertarik dengan paket ${button.dataset.plan}. Tolong jelaskan langkah berikutnya.`
+      : `I am interested in the ${button.dataset.plan} plan. Please explain the next step.`;
+    sendSupportMessage(message);
+  });
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && supportWidget.classList.contains("is-open")) {
+    setSupportOpen(false, { focus: false });
+    supportLauncher.focus();
+  }
+});
+
+document.addEventListener("click", (event) => {
+  if (!supportWidget.classList.contains("is-open") || supportWidget.contains(event.target)) return;
+  setSupportOpen(false, { focus: false });
+});
+
+loadSupportHistory();
 setLanguage(activeLanguage);
 
 function initPageAnimations() {
@@ -950,7 +1263,7 @@ function initPageAnimations() {
       }
     });
 
-    gsap.utils.toArray(".tech-card, .image-card, .privacy-visual").forEach((element) => {
+    gsap.utils.toArray(".tech-card, .image-card, .privacy-visual, .price-card").forEach((element) => {
       gsap.fromTo(
         element,
         { scale: 0.92, opacity: 0.72 },
@@ -968,7 +1281,7 @@ function initPageAnimations() {
       );
     });
 
-    const textTargets = document.querySelectorAll(".wide-heading p, .flow-copy p, .comparison-copy p");
+    const textTargets = document.querySelectorAll(".wide-heading p, .flow-copy p, .comparison-copy p, .pricing-heading p");
     textTargets.forEach((paragraph) => {
       const words = paragraph.textContent.trim().split(/\s+/);
       paragraph.innerHTML = words.map((word) => `<span class="reveal-word">${word}</span>`).join(" ");

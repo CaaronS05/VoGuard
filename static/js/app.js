@@ -36,6 +36,7 @@ const els = {
   audioUpload: document.querySelector("#audioUpload"),
   uploadZone: document.querySelector("#uploadZone"),
   uploadState: document.querySelector("#uploadState"),
+  uploadFileName: document.querySelector("#uploadFileName"),
   resultScore: document.querySelector("#resultScore"),
   resultLevel: document.querySelector("#resultLevel"),
   resultRecommendation: document.querySelector("#resultRecommendation"),
@@ -46,6 +47,12 @@ const els = {
   analysisLoaderText: document.querySelector("#analysisLoaderText"),
   anomalyList: document.querySelector("#anomalyList"),
   callMeter: document.querySelector("#callMeter"),
+  callMeterLabel: document.querySelector("#callMeterLabel"),
+  callIntegrityScore: document.querySelector("#callIntegrityScore"),
+  callRiskLevel: document.querySelector("#callRiskLevel"),
+  callSessionId: document.querySelector("#callSessionId"),
+  callTimestamp: document.querySelector("#callTimestamp"),
+  callSessionStatus: document.querySelector("#callSessionStatus"),
   callRecommendation: document.querySelector("#callRecommendation"),
   reportSummary: document.querySelector("#reportSummary"),
   downloadReport: document.querySelector("#downloadReport"),
@@ -66,6 +73,7 @@ const copy = {
     newSample: "Menunggu analisis baru",
     waitingForStop: "Hasil sebelumnya disembunyikan. Stop rekaman untuk memulai analisis baru.",
     analysisBusy: "Analisis lain masih berjalan. Tunggu hingga selesai.",
+    monitoring: "Monitoring",
     awaitingSample: "Menunggu sampel",
     resultsPending: "Hasil akan muncul setelah rekaman atau upload audio selesai dianalisis.",
     completed: "Analisis selesai.",
@@ -85,6 +93,7 @@ const copy = {
     newSample: "Awaiting new analysis",
     waitingForStop: "The previous result is hidden. Stop recording to begin a new analysis.",
     analysisBusy: "Another analysis is still running. Please wait until it finishes.",
+    monitoring: "Monitoring",
     awaitingSample: "Awaiting sample",
     resultsPending: "Results will appear after the recording or uploaded audio has been analyzed.",
     completed: "Analysis completed.",
@@ -129,15 +138,28 @@ const staticTranslations = {
     "#startRecording": "Mulai Rekam",
     "#stopRecording": "Stop Rekam",
     ".score-block span": "Risiko manipulasi",
-    "#upload .section-heading h2": "Upload sampel suara untuk dianalisis.",
-    "#upload .section-heading p": "WAV direkomendasikan. Format lain bergantung pada dukungan audio lokal Python.",
-    "#uploadZone strong": "Tarik audio ke sini atau pilih file",
-    "#call .pin-title h2": "Monitor simulasi panggilan perbankan.",
-    "#call .pin-title p": "Panel ini memakai hasil analisis terbaru, bukan true streaming.",
-    ".call-stack .call-card:nth-child(1) span": "Caller ID",
-    ".call-stack .call-card:nth-child(2) span": "Status sesi",
-    ".call-stack .call-card:nth-child(3) span": "Meter integritas audio",
-    ".call-stack .call-card:nth-child(4) span": "Rekomendasi agent",
+    "#upload .section-heading h2": "Upload audio. Dapatkan sinyal integritas yang jelas.",
+    "#upload .section-heading p": "Pilih satu sampel suara. VoGuard akan memeriksa pitch, energi spektral, kestabilan temporal, dan kualitas rekaman.",
+    ".upload-kicker": "Penerimaan audio integritas",
+    "#uploadZone > strong": "Tarik sampel suara ke sini.",
+    ".upload-copy": "Atau pilih file audio lokal. Tidak ada data yang dikirim keluar perangkat ini.",
+    ".upload-button": "Pilih file audio",
+    ".upload-file-card small": "Sampel terpilih",
+    ".upload-specs div:nth-child(1) span": "Format utama",
+    ".upload-specs div:nth-child(2) span": "Durasi minimum",
+    ".upload-specs div:nth-child(3) span": "Pemrosesan",
+    ".upload-specs div:nth-child(3) strong": "Lokal",
+    ".upload-live-link": "Rekam langsung dengan mikrofon",
+    "#call .section-heading h2": "Satu sinyal. Keputusan panggilan lebih cepat.",
+    "#call .section-heading p": "Simulasi ini menerjemahkan analisis terbaru menjadi rekomendasi operasional yang jelas untuk agent panggilan.",
+    ".call-identity-topline > span:nth-child(2)": "Sesi analisis terbaru",
+    ".caller-copy > span": "Identitas penelepon",
+    ".call-analyze-button": "Jalankan analisis live baru",
+    ".call-score-copy > span": "Integritas audio",
+    ".call-risk-line span": "Penilaian saat ini",
+    ".call-status-card > span": "Status sesi",
+    ".call-meter-card > div:first-child > span": "Sinyal terpercaya",
+    ".call-recommendation-card > span": "Tindakan agent yang disarankan",
     "#reports .section-heading h2": "Laporan skor risiko terbaru.",
     "#reports .section-heading p": "Download laporan JSON untuk review lokal atau dokumentasi demo investor.",
     "#downloadReport": "Download Laporan JSON",
@@ -180,15 +202,28 @@ const staticTranslations = {
     "#startRecording": "Start Recording",
     "#stopRecording": "Stop Recording",
     ".score-block span": "Manipulation risk",
-    "#upload .section-heading h2": "Upload a voice sample for analysis.",
-    "#upload .section-heading p": "WAV is preferred. Other formats may work if your local Python audio stack supports them.",
-    "#uploadZone strong": "Drop audio here or choose a file",
-    "#call .pin-title h2": "Simulated banking call monitor.",
-    "#call .pin-title p": "This panel uses the latest analysis result, not true streaming.",
-    ".call-stack .call-card:nth-child(1) span": "Caller ID",
-    ".call-stack .call-card:nth-child(2) span": "Session status",
-    ".call-stack .call-card:nth-child(3) span": "Audio integrity meter",
-    ".call-stack .call-card:nth-child(4) span": "Agent recommendation",
+    "#upload .section-heading h2": "Upload audio. Get a clear integrity signal.",
+    "#upload .section-heading p": "Choose one voice sample and VoGuard will inspect pitch, spectral energy, temporal stability, and recording quality.",
+    ".upload-kicker": "Audio integrity intake",
+    "#uploadZone > strong": "Drop a voice sample here.",
+    ".upload-copy": "Or browse a local audio file. Nothing is uploaded outside this device.",
+    ".upload-button": "Choose audio file",
+    ".upload-file-card small": "Selected sample",
+    ".upload-specs div:nth-child(1) span": "Preferred",
+    ".upload-specs div:nth-child(2) span": "Minimum",
+    ".upload-specs div:nth-child(3) span": "Processing",
+    ".upload-specs div:nth-child(3) strong": "Local",
+    ".upload-live-link": "Record with microphone instead",
+    "#call .section-heading h2": "One signal. A faster call decision.",
+    "#call .section-heading p": "This simulation translates the latest analysis into a clear operational recommendation for a call agent.",
+    ".call-identity-topline > span:nth-child(2)": "Latest analyzed session",
+    ".caller-copy > span": "Caller identity",
+    ".call-analyze-button": "Run a new live analysis",
+    ".call-score-copy > span": "Audio integrity",
+    ".call-risk-line span": "Current assessment",
+    ".call-status-card > span": "Session status",
+    ".call-meter-card > div:first-child > span": "Trusted signal",
+    ".call-recommendation-card > span": "Recommended agent action",
     "#reports .section-heading h2": "Latest risk score report.",
     "#reports .section-heading p": "Download the JSON report for local review or investor demo documentation.",
     "#downloadReport": "Download JSON Report",
@@ -229,6 +264,16 @@ function switchView(viewName) {
       { opacity: 0, y: 24 },
       { opacity: 1, y: 0, duration: 0.7, stagger: 0.06, ease: "power3.out" }
     );
+
+    if (viewName === "upload") {
+      gsap.fromTo(".upload-orbit", { scale: 0.72, opacity: 0, rotate: -18 }, { scale: 1, opacity: 1, rotate: 0, duration: 1, ease: "power4.out" });
+      gsap.fromTo(".upload-side-panel > *", { scale: 0.88, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 0.8, stagger: 0.08, ease: "power3.out" });
+    }
+
+    if (viewName === "call") {
+      gsap.fromTo(".call-identity-panel", { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.9, ease: "power4.out" });
+      gsap.fromTo(".call-score-panel, .call-decision-stack > *", { scale: 0.88, opacity: 0, y: 34 }, { scale: 1, opacity: 1, y: 0, duration: 0.8, stagger: 0.09, ease: "power3.out" });
+    }
   }
 }
 
@@ -344,7 +389,15 @@ function renderResult(result, { updateLiveCard = true } = {}) {
     });
   }
 
-  els.callMeter.style.width = `${Math.max(0, 100 - result.risk_score)}%`;
+  const integrityScore = Math.max(0, 100 - result.risk_score);
+  els.callMeter.style.width = `${integrityScore}%`;
+  els.callMeterLabel.textContent = `${integrityScore}%`;
+  els.callIntegrityScore.textContent = integrityScore;
+  els.callRiskLevel.textContent = result.risk_level;
+  els.callRiskLevel.className = riskClass(result.risk_level);
+  els.callSessionId.textContent = result.session_id || "Analyzed session";
+  els.callTimestamp.textContent = result.timestamp ? new Date(result.timestamp).toLocaleString() : "Latest result";
+  els.callSessionStatus.textContent = t("monitoring");
   els.callRecommendation.textContent = result.recommendation;
   els.downloadReport.disabled = false;
   renderReport(result);
@@ -588,6 +641,7 @@ async function handleUpload(file) {
     return;
   }
   resetLiveResult();
+  els.uploadFileName.textContent = file.name;
   setAnalysisLoading(true, t("uploadProcessing"));
   els.uploadState.textContent = t("uploadProcessing");
   try {
@@ -640,7 +694,7 @@ function initMotion() {
   gsap.fromTo(".topbar", { opacity: 0, y: -18 }, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" });
   gsap.fromTo(".hero-copy > *, .hero-media", { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 1, stagger: 0.09, ease: "power3.out" });
 
-  gsap.utils.toArray(".metric-card, .command-card, .call-preview-card, .record-card, .result-card, .chart-card, .call-card").forEach((card) => {
+  gsap.utils.toArray(".metric-card, .command-card, .call-preview-card, .record-card, .result-card, .chart-card, .call-card, .upload-file-card, .upload-signal-card, .call-score-panel").forEach((card) => {
     card.addEventListener("pointermove", (event) => {
       const rect = card.getBoundingClientRect();
       const x = (event.clientX - rect.left) / rect.width - 0.5;
