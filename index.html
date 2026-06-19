@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/landing/style.css" />
+    <link rel="stylesheet" href="/landing/style.css?v=pricing-ref" />
   </head>
   <body class="is-loading">
     <div class="site-loader" id="siteLoader" aria-live="polite" aria-label="Loading website">
@@ -79,42 +79,19 @@
           </div>
         </div>
 
-        <div class="hero-visual interactive-panel" aria-label="Voice integrity dashboard preview">
-          <div class="panel-topline">
-            <span>Live Call Integrity</span>
+        <div class="hero-visual hero-scene interactive-panel" id="heroScene" aria-label="Animated voice integrity analysis scene">
+          <canvas id="heroCanvas" aria-hidden="true"></canvas>
+          <div class="hero-scene-grid" aria-hidden="true"></div>
+          <div class="panel-topline hero-scene-status">
+            <span><i></i>Live Call Integrity</span>
             <strong>Potential Voice Manipulation</strong>
           </div>
-          <div class="risk-orbit">
-            <svg viewBox="0 0 240 240" aria-hidden="true">
-              <circle class="orbit-base" cx="120" cy="120" r="94"></circle>
-              <circle class="orbit-value" cx="120" cy="120" r="94"></circle>
-            </svg>
-            <div>
-              <span class="risk-number" data-target="78">0</span>
-              <small>Manipulation risk score</small>
-            </div>
+          <div class="hero-scene-score">
+            <small>Manipulation risk score</small>
+            <span class="risk-number" data-target="78">0</span>
+            <b>HIGH SIGNAL VARIANCE</b>
           </div>
-          <div class="waveform hero-wave" aria-hidden="true">
-            <span style="--i: 0"></span>
-            <span style="--i: 1"></span>
-            <span style="--i: 2"></span>
-            <span style="--i: 3"></span>
-            <span style="--i: 4"></span>
-            <span style="--i: 5"></span>
-            <span style="--i: 6"></span>
-            <span style="--i: 7"></span>
-            <span style="--i: 8"></span>
-            <span style="--i: 9"></span>
-            <span style="--i: 10"></span>
-            <span style="--i: 11"></span>
-            <span style="--i: 12"></span>
-            <span style="--i: 13"></span>
-            <span style="--i: 14"></span>
-            <span style="--i: 15"></span>
-            <span style="--i: 16"></span>
-            <span style="--i: 17"></span>
-          </div>
-          <div class="signal-grid">
+          <div class="signal-grid hero-scene-signals">
             <div>
               <small>Detected signal</small>
               <strong>Micro-jitter</strong>
@@ -128,10 +105,13 @@
               <strong>Spectral artifact</strong>
             </div>
           </div>
-          <div class="challenge-card">
+          <div class="challenge-card hero-scene-challenge">
             <span>Random challenge phrase</span>
             <strong>“Ulangi: verifikasi tujuh biru”</strong>
             <small>Response timer: <b>02.8s</b></small>
+          </div>
+          <div class="hero-scene-hint" aria-hidden="true">
+            <span></span> Move pointer to inspect signal
           </div>
         </div>
       </section>
@@ -432,118 +412,93 @@
       <section class="pricing section-reveal" id="pricing">
         <div class="pricing-heading">
           <div>
-            <span class="section-kicker">Pilih sesuai skala penggunaan</span>
-            <h2>Mulai gratis. Tingkatkan saat kebutuhan keamanan bertambah.</h2>
+            <span class="section-kicker">Paket VoGuard</span>
+            <h2>Harga jelas untuk perlindungan suara.</h2>
           </div>
           <p>
-            Seluruh paket menggunakan fondasi analisis integritas suara VoGuard.
-            Upgrade kapan saja ketika tim, volume analisis, atau kebutuhan audit berkembang.
+            Pilih paket personal untuk perlindungan panggilan harian, atau hubungi tim sales
+            untuk volume enterprise dan integrasi berskala besar.
           </p>
         </div>
 
         <div class="pricing-grid">
-          <article class="price-card price-free">
+          <article class="price-card price-card--enterprise">
             <div class="price-card-head">
-              <span class="plan-label">Gratis</span>
-              <h3>Free plan</h3>
-              <p>Untuk pengguna umum dan percobaan awal.</p>
-              <div class="plan-price"><strong>Rp 0</strong><span>Selamanya gratis</span></div>
-              <a class="price-button" href="/dashboard">Mulai gratis</a>
+              <span class="plan-pill">B2B Enterprise</span>
+              <h3>Enterprise</h3>
+              <p>Bank, contact center, fintech, asuransi</p>
+              <div class="plan-price-orb">
+                <strong>Rp 1.000</strong>
+                <span>per user / bulan</span>
+                <b>Volume pricing</b>
+              </div>
+              <button class="price-button price-contact-trigger" type="button" data-plan="Enterprise">Hubungi sales</button>
             </div>
             <div class="plan-feature-group">
-              <span>Deteksi dasar</span>
+              <span>Integrasi &amp; skala</span>
               <ul>
-                <li>Deteksi voice changer dasar <b>10x/bulan</b></li>
-                <li>Riwayat analisis <b>7 hari</b></li>
-                <li class="locked">Real-time fraud detection</li>
+                <li>Volume-based pricing <b>Semakin banyak, semakin murah</b></li>
+                <li>Integrasi API Mobile Banking</li>
+                <li>SLA &amp; support prioritas 24/7</li>
               </ul>
             </div>
             <div class="plan-feature-group">
-              <span>Analisis sinyal</span>
-              <ul>
-                <li class="locked">Analisis latensi mikro</li>
-                <li class="locked">Analisis pitch &amp; spektral</li>
-                <li class="locked">Tantangan dinamis aktif</li>
-              </ul>
-            </div>
-            <div class="plan-feature-group">
-              <span>Laporan &amp; integrasi</span>
-              <ul>
-                <li class="locked">Laporan keamanan PDF</li>
-                <li class="locked">Dashboard bisnis</li>
-                <li class="locked">API &amp; audit trail</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="price-card price-premium">
-            <div class="popular-line"><span>Paling populer</span><small>Rekomendasi individu</small></div>
-            <div class="price-card-head">
-              <h3>Premium</h3>
-              <p>Freelancer, content creator, influencer, dan pengguna profesional.</p>
-              <div class="plan-price"><strong>Rp149.000</strong><span>per bulan · tagihan bulanan</span></div>
-              <button class="price-button price-contact-trigger" type="button" data-plan="Premium">Mulai Premium</button>
-            </div>
-            <div class="plan-feature-group">
-              <span>Deteksi lengkap</span>
-              <ul>
-                <li>Analisis tanpa batas <b>Unlimited</b></li>
-                <li>Real-time voice fraud detection</li>
-                <li>Voice clone detection</li>
-              </ul>
-            </div>
-            <div class="plan-feature-group">
-              <span>Analisis sinyal</span>
+              <span>Deteksi penuh</span>
               <ul>
                 <li>Analisis latensi mikro</li>
                 <li>Analisis pitch &amp; spektral</li>
                 <li>Tantangan dinamis aktif</li>
+                <li>Mitigasi bertingkat otomatis</li>
               </ul>
             </div>
             <div class="plan-feature-group">
-              <span>Laporan &amp; integrasi</span>
+              <span>Kepatuhan &amp; forensik</span>
               <ul>
-                <li>Riwayat 1 tahun</li>
-                <li>Laporan keamanan</li>
-                <li>Notifikasi risiko tinggi</li>
-                <li class="locked">Dashboard bisnis multi-akun</li>
-                <li class="locked">API &amp; audit trail</li>
+                <li>Log forensik terenkripsi <b>UU PDP / GDPR</b></li>
+                <li>Dashboard multi-tenant</li>
+                <li>Deployment on-premise / cloud</li>
+                <li>Custom threshold per transaksi</li>
               </ul>
             </div>
           </article>
 
-          <article class="price-card price-professional">
+          <article class="price-card price-card--personal">
             <div class="price-card-head">
-              <span class="plan-label enterprise">Enterprise</span>
-              <h3>Professional</h3>
-              <p>Konsultan, notaris, agen properti, perusahaan, dan tim operasional.</p>
-              <div class="plan-price"><strong>Rp499.000</strong><span>per bulan · hingga 5 akun pengguna</span></div>
-              <button class="price-button price-contact-trigger" type="button" data-plan="Professional">Mulai Professional</button>
+              <span class="plan-pill">B2C Personal</span>
+              <h3>Personal</h3>
+              <p>Individu yang ingin memverifikasi panggilan</p>
+              <div class="plan-price-orb">
+                <strong>Rp 99.000</strong>
+                <span>sekali bayar</span>
+                <b>Lifetime</b>
+              </div>
+              <button class="price-button price-contact-trigger" type="button" data-plan="Personal Lifetime">Beli sekarang</button>
             </div>
             <div class="plan-feature-group">
-              <span>Semua fitur Premium, ditambah</span>
+              <span>Perlindungan personal</span>
               <ul>
-                <li>5 akun pengguna <b>Tim</b></li>
-                <li>Dashboard bisnis terpusat</li>
-                <li>Export laporan PDF</li>
+                <li>Lifetime license <b>Bayar 1x selamanya</b></li>
+                <li>Perlindungan panggilan pribadi</li>
+                <li>Update keamanan berkala</li>
               </ul>
             </div>
             <div class="plan-feature-group">
-              <span>Integrasi &amp; kepatuhan</span>
+              <span>Deteksi</span>
               <ul>
-                <li>API dasar REST</li>
-                <li>Audit trail lengkap</li>
-                <li>Log forensik terenkripsi</li>
-                <li>Prioritas server &amp; SLA</li>
-                <li>Dukungan teknis prioritas</li>
+                <li>Deteksi voice changer</li>
+                <li>Analisis pitch dasar</li>
+                <li>Notifikasi risiko langsung</li>
+              </ul>
+            </div>
+            <div class="plan-feature-group">
+              <span>Kemudahan</span>
+              <ul>
+                <li>Riwayat analisis tanpa batas</li>
+                <li>Antarmuka sederhana</li>
+                <li>Tanpa langganan / tanpa iklan</li>
               </ul>
             </div>
           </article>
-        </div>
-
-        <div class="pricing-note">
-          <span>Butuh lebih dari 5 pengguna atau deployment on-premise?</span>
-          <button class="price-contact-trigger" type="button" data-plan="Enterprise Custom">Bicarakan paket Enterprise</button>
         </div>
       </section>
 
@@ -555,7 +510,7 @@
         </p>
         <div class="hero-buttons">
           <a class="button button-primary" href="mailto:partnership@VoGuard.example">Request Demo</a>
-          <a class="button button-secondary" href="mailto:partners@VoGuard.example">Discuss Partnership</a>
+          <button class="button button-secondary" id="partnershipTrigger" type="button">Discuss Partnership</button>
         </div>
       </section>
     </main>
@@ -616,9 +571,90 @@
       </section>
     </aside>
 
+    <div class="partnership-modal" id="partnershipModal" aria-hidden="true">
+      <button class="partnership-backdrop" type="button" aria-label="Tutup form kemitraan"></button>
+      <section class="partnership-dialog" role="dialog" aria-modal="true" aria-labelledby="partnershipTitle">
+        <button class="partnership-close" id="partnershipClose" type="button" aria-label="Tutup form kemitraan">×</button>
+
+        <div class="partnership-intro">
+          <span class="section-kicker">Kemitraan VoGuard</span>
+          <h2 id="partnershipTitle">Mari rancang keamanan suara yang sesuai dengan organisasi Anda.</h2>
+          <p>
+            Ceritakan kebutuhan, skala tim, dan alur panggilan Anda. Informasi ini membantu kami menyiapkan diskusi yang lebih relevan.
+          </p>
+          <div class="partnership-points">
+            <div><strong>Enterprise deployment</strong><span>Cloud, edge, atau on-premise.</span></div>
+            <div><strong>Integration planning</strong><span>API, risk score, dan forensic workflow.</span></div>
+            <div><strong>Security review</strong><span>Audit, SLA, dan kebutuhan kepatuhan.</span></div>
+          </div>
+        </div>
+
+        <form class="partnership-form" id="partnershipForm" novalidate>
+          <div class="partnership-form-grid">
+            <label for="partnershipName">
+              <span>Nama lengkap</span>
+              <input id="partnershipName" name="name" type="text" autocomplete="name" required />
+              <small></small>
+            </label>
+            <label for="partnershipEmail">
+              <span>Email bisnis</span>
+              <input id="partnershipEmail" name="email" type="email" autocomplete="email" required />
+              <small></small>
+            </label>
+            <label for="partnershipCompany">
+              <span>Perusahaan</span>
+              <input id="partnershipCompany" name="company" type="text" autocomplete="organization" required />
+              <small></small>
+            </label>
+            <label for="partnershipRole">
+              <span>Jabatan</span>
+              <input id="partnershipRole" name="role" type="text" autocomplete="organization-title" required />
+              <small></small>
+            </label>
+            <label class="field-wide" for="partnershipNeed">
+              <span>Kebutuhan utama</span>
+              <select id="partnershipNeed" name="need" required>
+                <option value="">Pilih kebutuhan</option>
+                <option value="Enterprise deployment">Enterprise deployment</option>
+                <option value="API integration">API integration</option>
+                <option value="Banking and contact center">Banking / contact center</option>
+                <option value="Security research">Security research</option>
+                <option value="Investment and partnership">Investment / strategic partnership</option>
+                <option value="Other">Lainnya</option>
+              </select>
+              <small></small>
+            </label>
+            <label class="field-wide" for="partnershipMessage">
+              <span>Ceritakan kebutuhan Anda</span>
+              <textarea id="partnershipMessage" name="message" rows="5" maxlength="1500" required></textarea>
+              <small></small>
+            </label>
+          </div>
+
+          <label class="partnership-consent">
+            <input id="partnershipConsent" name="consent" type="checkbox" required />
+            <span>Saya setuju informasi ini disimpan secara lokal untuk menyiapkan permintaan kemitraan.</span>
+          </label>
+
+          <div class="partnership-actions">
+            <p>Data tidak dikirim ke server eksternal pada versi prototipe ini.</p>
+            <button class="button button-primary" type="submit">Kirim permintaan</button>
+          </div>
+        </form>
+
+        <div class="partnership-success" id="partnershipSuccess" hidden>
+          <span class="partnership-success-mark" aria-hidden="true"></span>
+          <h3>Permintaan kemitraan tersimpan.</h3>
+          <p>Gunakan nomor referensi ini saat melanjutkan diskusi dengan tim VoGuard.</p>
+          <strong id="partnershipReference"></strong>
+          <button class="button button-primary" id="partnershipDone" type="button">Selesai</button>
+        </div>
+      </section>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
-    <script src="/landing/script.js"></script>
+    <script src="/landing/script.js?v=pricing-ref"></script>
   </body>
 </html>

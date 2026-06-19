@@ -174,14 +174,12 @@ const translations = {
     signalIntegrity: "Integritas Sinyal",
     manualVerification: "Verifikasi Manual",
     operatorWarning: "Peringatan Operator",
-    pricingKicker: "Pilih sesuai skala penggunaan",
-    pricingTitle: "Mulai gratis. Tingkatkan saat kebutuhan keamanan bertambah.",
-    pricingBody: "Seluruh paket menggunakan fondasi analisis integritas suara VoGuard. Upgrade kapan saja ketika tim, volume analisis, atau kebutuhan audit berkembang.",
-    pricingFreeButton: "Mulai gratis",
-    pricingPremiumButton: "Mulai Premium",
-    pricingProfessionalButton: "Mulai Professional",
+    pricingKicker: "Paket VoGuard",
+    pricingTitle: "Harga jelas untuk perlindungan suara.",
+    pricingBody: "Pilih paket personal untuk perlindungan panggilan harian, atau hubungi tim sales untuk volume enterprise dan integrasi berskala besar.",
+    pricingPersonalButton: "Beli sekarang",
     pricingNote: "Butuh lebih dari 5 pengguna atau deployment on-premise?",
-    pricingEnterpriseButton: "Bicarakan paket Enterprise",
+    pricingEnterpriseButton: "Hubungi sales",
     supportTitle: "Customer Service",
     supportOnline: "Online · balasan cepat",
     supportAgent: "VoGuard Support",
@@ -189,6 +187,24 @@ const translations = {
     supportGreeting: "Halo, saya asisten VoGuard. Ada yang bisa saya bantu terkait paket, demo, atau integrasi?",
     supportPlaceholder: "Tulis pertanyaan Anda...",
     supportPrivacy: "Percakapan disimpan hanya di browser perangkat ini.",
+    partnershipKicker: "Kemitraan VoGuard",
+    partnershipTitle: "Mari rancang keamanan suara yang sesuai dengan organisasi Anda.",
+    partnershipBody: "Ceritakan kebutuhan, skala tim, dan alur panggilan Anda. Informasi ini membantu kami menyiapkan diskusi yang lebih relevan.",
+    partnershipName: "Nama lengkap",
+    partnershipEmail: "Email bisnis",
+    partnershipCompany: "Perusahaan",
+    partnershipRole: "Jabatan",
+    partnershipNeed: "Kebutuhan utama",
+    partnershipNeedPlaceholder: "Pilih kebutuhan",
+    partnershipMessage: "Ceritakan kebutuhan Anda",
+    partnershipConsent: "Saya setuju informasi ini disimpan secara lokal untuk menyiapkan permintaan kemitraan.",
+    partnershipPrivacy: "Data tidak dikirim ke server eksternal pada versi prototipe ini.",
+    partnershipSubmit: "Kirim permintaan",
+    partnershipSuccessTitle: "Permintaan kemitraan tersimpan.",
+    partnershipSuccessBody: "Gunakan nomor referensi ini saat melanjutkan diskusi dengan tim VoGuard.",
+    partnershipDone: "Selesai",
+    partnershipRequired: "Bagian ini wajib diisi.",
+    partnershipEmailInvalid: "Masukkan alamat email yang valid.",
     finalTitle: "Amankan Generasi Berikutnya Transaksi Suara",
     finalBody: "Bermitra dengan VoGuard untuk mengeksplorasi deteksi fraud suara real-time bagi perbankan, contact center, dan komunikasi enterprise.",
     discussPartnership: "Diskusikan Kemitraan",
@@ -329,14 +345,12 @@ const translations = {
     signalIntegrity: "Signal Integrity",
     manualVerification: "Manual Verification",
     operatorWarning: "Operator Warning",
-    pricingKicker: "Choose a plan for your scale",
-    pricingTitle: "Start free. Upgrade as your security needs grow.",
-    pricingBody: "Every plan uses VoGuard's voice-integrity analysis foundation. Upgrade whenever your team, analysis volume, or audit needs expand.",
-    pricingFreeButton: "Start free",
-    pricingPremiumButton: "Start Premium",
-    pricingProfessionalButton: "Start Professional",
+    pricingKicker: "VoGuard plans",
+    pricingTitle: "Clear pricing for voice protection.",
+    pricingBody: "Choose Personal for everyday call protection, or contact sales for enterprise volume and large-scale integrations.",
+    pricingPersonalButton: "Buy now",
     pricingNote: "Need more than 5 users or an on-premise deployment?",
-    pricingEnterpriseButton: "Discuss Enterprise plans",
+    pricingEnterpriseButton: "Contact sales",
     supportTitle: "Customer Service",
     supportOnline: "Online · fast response",
     supportAgent: "VoGuard Support",
@@ -344,6 +358,24 @@ const translations = {
     supportGreeting: "Hello, I am the VoGuard assistant. How can I help with plans, demos, or integrations?",
     supportPlaceholder: "Write your question...",
     supportPrivacy: "This conversation is stored only in this browser.",
+    partnershipKicker: "VoGuard partnership",
+    partnershipTitle: "Let us design voice security around your organization.",
+    partnershipBody: "Tell us about your needs, team scale, and call workflow. This information helps prepare a more relevant discussion.",
+    partnershipName: "Full name",
+    partnershipEmail: "Business email",
+    partnershipCompany: "Company",
+    partnershipRole: "Role",
+    partnershipNeed: "Primary need",
+    partnershipNeedPlaceholder: "Select a requirement",
+    partnershipMessage: "Tell us about your requirements",
+    partnershipConsent: "I agree that this information may be stored locally to prepare the partnership request.",
+    partnershipPrivacy: "No data is sent to an external server in this prototype.",
+    partnershipSubmit: "Submit request",
+    partnershipSuccessTitle: "Partnership request saved.",
+    partnershipSuccessBody: "Use this reference number when continuing the discussion with the VoGuard team.",
+    partnershipDone: "Done",
+    partnershipRequired: "This field is required.",
+    partnershipEmailInvalid: "Enter a valid email address.",
     finalTitle: "Secure the Next Generation of Voice Transactions",
     finalBody: "Partner with VoGuard to explore real-time voice fraud detection for banking, contact center, and enterprise communication.",
     discussPartnership: "Discuss Partnership",
@@ -353,46 +385,40 @@ const translations = {
 
 const pricingTranslations = {
   id: [
-    [".price-free .plan-label", "Gratis"],
-    [".price-free h3", "Free plan"],
-    [".price-free .price-card-head > p", "Untuk pengguna umum dan percobaan awal."],
-    [".price-free .plan-price span", "Selamanya gratis"],
-    [".price-premium .popular-line span", "Paling populer"],
-    [".price-premium .popular-line small", "Rekomendasi individu"],
-    [".price-premium .price-card-head > p", "Freelancer, content creator, influencer, dan pengguna profesional."],
-    [".price-premium .plan-price span", "per bulan · tagihan bulanan"],
-    [".price-professional .plan-label", "Enterprise"],
-    [".price-professional .price-card-head > p", "Konsultan, notaris, agen properti, perusahaan, dan tim operasional."],
-    [".price-professional .plan-price span", "per bulan · hingga 5 akun pengguna"],
-    [".price-free .plan-feature-group:nth-child(2) > span", "Deteksi dasar"],
-    [".price-free .plan-feature-group:nth-child(3) > span", "Analisis sinyal"],
-    [".price-free .plan-feature-group:nth-child(4) > span", "Laporan & integrasi"],
-    [".price-premium .plan-feature-group:nth-child(3) > span", "Deteksi lengkap"],
-    [".price-premium .plan-feature-group:nth-child(4) > span", "Analisis sinyal"],
-    [".price-premium .plan-feature-group:nth-child(5) > span", "Laporan & integrasi"],
-    [".price-professional .plan-feature-group:nth-child(2) > span", "Semua fitur Premium, ditambah"],
-    [".price-professional .plan-feature-group:nth-child(3) > span", "Integrasi & kepatuhan"]
+    [".price-card--enterprise .plan-pill", "B2B Enterprise"],
+    [".price-card--enterprise h3", "Enterprise"],
+    [".price-card--enterprise .price-card-head > p", "Bank, contact center, fintech, asuransi"],
+    [".price-card--enterprise .plan-price-orb span", "per user / bulan"],
+    [".price-card--enterprise .plan-price-orb b", "Volume pricing"],
+    [".price-card--enterprise .plan-feature-group:nth-child(2) > span", "Integrasi & skala"],
+    [".price-card--enterprise .plan-feature-group:nth-child(3) > span", "Deteksi penuh"],
+    [".price-card--enterprise .plan-feature-group:nth-child(4) > span", "Kepatuhan & forensik"],
+    [".price-card--personal .plan-pill", "B2C Personal"],
+    [".price-card--personal h3", "Personal"],
+    [".price-card--personal .price-card-head > p", "Individu yang ingin memverifikasi panggilan"],
+    [".price-card--personal .plan-price-orb span", "sekali bayar"],
+    [".price-card--personal .plan-price-orb b", "Lifetime"],
+    [".price-card--personal .plan-feature-group:nth-child(2) > span", "Perlindungan personal"],
+    [".price-card--personal .plan-feature-group:nth-child(3) > span", "Deteksi"],
+    [".price-card--personal .plan-feature-group:nth-child(4) > span", "Kemudahan"]
   ],
   en: [
-    [".price-free .plan-label", "Free"],
-    [".price-free h3", "Free plan"],
-    [".price-free .price-card-head > p", "For general users and initial evaluation."],
-    [".price-free .plan-price span", "Free forever"],
-    [".price-premium .popular-line span", "Most popular"],
-    [".price-premium .popular-line small", "Individual recommendation"],
-    [".price-premium .price-card-head > p", "For freelancers, content creators, influencers, and professional users."],
-    [".price-premium .plan-price span", "per month · billed monthly"],
-    [".price-professional .plan-label", "Enterprise"],
-    [".price-professional .price-card-head > p", "For consultants, notaries, property agents, companies, and operational teams."],
-    [".price-professional .plan-price span", "per month · up to 5 user accounts"],
-    [".price-free .plan-feature-group:nth-child(2) > span", "Basic detection"],
-    [".price-free .plan-feature-group:nth-child(3) > span", "Signal analysis"],
-    [".price-free .plan-feature-group:nth-child(4) > span", "Reports & integration"],
-    [".price-premium .plan-feature-group:nth-child(3) > span", "Complete detection"],
-    [".price-premium .plan-feature-group:nth-child(4) > span", "Signal analysis"],
-    [".price-premium .plan-feature-group:nth-child(5) > span", "Reports & integration"],
-    [".price-professional .plan-feature-group:nth-child(2) > span", "Everything in Premium, plus"],
-    [".price-professional .plan-feature-group:nth-child(3) > span", "Integration & compliance"]
+    [".price-card--enterprise .plan-pill", "B2B Enterprise"],
+    [".price-card--enterprise h3", "Enterprise"],
+    [".price-card--enterprise .price-card-head > p", "Banks, contact centers, fintech, insurance"],
+    [".price-card--enterprise .plan-price-orb span", "per user / month"],
+    [".price-card--enterprise .plan-price-orb b", "Volume pricing"],
+    [".price-card--enterprise .plan-feature-group:nth-child(2) > span", "Integration & scale"],
+    [".price-card--enterprise .plan-feature-group:nth-child(3) > span", "Full detection"],
+    [".price-card--enterprise .plan-feature-group:nth-child(4) > span", "Compliance & forensics"],
+    [".price-card--personal .plan-pill", "B2C Personal"],
+    [".price-card--personal h3", "Personal"],
+    [".price-card--personal .price-card-head > p", "Individuals who want to verify calls"],
+    [".price-card--personal .plan-price-orb span", "one-time payment"],
+    [".price-card--personal .plan-price-orb b", "Lifetime"],
+    [".price-card--personal .plan-feature-group:nth-child(2) > span", "Personal protection"],
+    [".price-card--personal .plan-feature-group:nth-child(3) > span", "Detection"],
+    [".price-card--personal .plan-feature-group:nth-child(4) > span", "Ease of use"]
   ]
 };
 
@@ -411,6 +437,8 @@ const siteLoader = document.querySelector("#siteLoader");
 const loaderCanvas = document.querySelector("#loaderCanvas");
 const loaderProgress = document.querySelector("#loaderProgress");
 const loaderPercent = document.querySelector("#loaderPercent");
+const heroSceneElement = document.querySelector("#heroScene");
+const heroCanvas = document.querySelector("#heroCanvas");
 const supportWidget = document.querySelector("#supportWidget");
 const supportLauncher = document.querySelector("#supportLauncher");
 const supportPanel = document.querySelector("#supportPanel");
@@ -421,6 +449,17 @@ const supportForm = document.querySelector("#supportForm");
 const supportInput = document.querySelector("#supportInput");
 const supportUnread = document.querySelector("#supportUnread");
 const priceContactTriggers = document.querySelectorAll(".price-contact-trigger");
+const partnershipTrigger = document.querySelector("#partnershipTrigger");
+const partnershipModal = document.querySelector("#partnershipModal");
+const partnershipBackdrop = document.querySelector(".partnership-backdrop");
+const partnershipClose = document.querySelector("#partnershipClose");
+const partnershipDialog = document.querySelector(".partnership-dialog");
+const partnershipIntro = document.querySelector(".partnership-intro");
+const partnershipForm = document.querySelector("#partnershipForm");
+const partnershipSuccess = document.querySelector("#partnershipSuccess");
+const partnershipReference = document.querySelector("#partnershipReference");
+const partnershipDone = document.querySelector("#partnershipDone");
+const partnershipFields = Array.from(partnershipForm.elements).filter((field) => field.name);
 
 let activeLanguage = localStorage.getItem("voGuardLanguage") || "id";
 let demoButtonKey = "startMic";
@@ -451,7 +490,7 @@ const textBindings = [
   [".hero-buttons .button-secondary[href='#contact']", "enterpriseDemo"],
   [".panel-topline span", "panelLive"],
   [".panel-topline strong", "panelRisk"],
-  [".risk-orbit small", "panelScore"],
+  [".risk-orbit small, .hero-scene-score small", "panelScore"],
   [".signal-grid div:nth-child(1) small, .signal-grid div:nth-child(2) small, .signal-grid div:nth-child(3) small", "detectedSignal"],
   [".signal-grid div:nth-child(1) strong", "microJitter"],
   [".signal-grid div:nth-child(2) strong", "pitchDiscontinuity"],
@@ -556,9 +595,8 @@ const textBindings = [
   [".pricing-heading .section-kicker", "pricingKicker"],
   [".pricing-heading h2", "pricingTitle"],
   [".pricing-heading p", "pricingBody"],
-  [".price-free .price-button", "pricingFreeButton"],
-  [".price-premium .price-button", "pricingPremiumButton"],
-  [".price-professional .price-button", "pricingProfessionalButton"],
+  [".price-card--enterprise .price-button", "pricingEnterpriseButton"],
+  [".price-card--personal .price-button", "pricingPersonalButton"],
   [".pricing-note > span", "pricingNote"],
   [".pricing-note button", "pricingEnterpriseButton"],
   [".support-launcher-copy strong", "supportTitle"],
@@ -566,6 +604,21 @@ const textBindings = [
   [".support-agent strong", "supportAgent"],
   [".support-agent div > span", "supportOnlineNow"],
   [".support-privacy", "supportPrivacy"],
+  [".partnership-intro .section-kicker", "partnershipKicker"],
+  [".partnership-intro h2", "partnershipTitle"],
+  [".partnership-intro > p", "partnershipBody"],
+  ["label[for='partnershipName'] > span", "partnershipName"],
+  ["label[for='partnershipEmail'] > span", "partnershipEmail"],
+  ["label[for='partnershipCompany'] > span", "partnershipCompany"],
+  ["label[for='partnershipRole'] > span", "partnershipRole"],
+  ["label[for='partnershipNeed'] > span", "partnershipNeed"],
+  ["label[for='partnershipMessage'] > span", "partnershipMessage"],
+  [".partnership-consent span", "partnershipConsent"],
+  [".partnership-actions p", "partnershipPrivacy"],
+  [".partnership-actions .button", "partnershipSubmit"],
+  [".partnership-success h3", "partnershipSuccessTitle"],
+  [".partnership-success p", "partnershipSuccessBody"],
+  ["#partnershipDone", "partnershipDone"],
   [".final-cta h2", "finalTitle"],
   [".final-cta p", "finalBody"],
   [".final-cta .button-primary", "requestDemo"],
@@ -662,6 +715,7 @@ function setLanguage(language) {
   updateBoundText();
   updateDemoText();
   updateSupportText();
+  partnershipNeed.options[0].textContent = getText("partnershipNeedPlaceholder");
 }
 
 function supportTime() {
@@ -782,6 +836,129 @@ function sendSupportMessage(message) {
   }, 650);
 }
 
+const partnershipDraftKey = "voGuardPartnershipDraft";
+const partnershipRequestKey = "voGuardPartnershipRequests";
+let partnershipLastFocus = null;
+
+function setPartnershipView(success = false) {
+  partnershipIntro.hidden = success;
+  partnershipForm.hidden = success;
+  partnershipSuccess.hidden = !success;
+}
+
+function clearPartnershipError(field) {
+  const label = field.closest("label");
+  if (!label) return;
+  label.classList.remove("is-invalid");
+  const message = label.querySelector("small");
+  if (message) message.textContent = "";
+}
+
+function showPartnershipError(field) {
+  const label = field.closest("label");
+  if (!label) return;
+  label.classList.add("is-invalid");
+  const message = label.querySelector("small");
+  if (message) {
+    message.textContent = field.type === "email" && field.value
+      ? getText("partnershipEmailInvalid")
+      : getText("partnershipRequired");
+  }
+}
+
+function validatePartnershipForm() {
+  let firstInvalid = null;
+  partnershipFields.forEach((field) => {
+    clearPartnershipError(field);
+    if (!field.checkValidity()) {
+      showPartnershipError(field);
+      firstInvalid ||= field;
+    }
+  });
+  firstInvalid?.focus();
+  return !firstInvalid;
+}
+
+function savePartnershipDraft() {
+  const draft = {};
+  partnershipFields.forEach((field) => {
+    draft[field.name] = field.type === "checkbox" ? field.checked : field.value;
+  });
+  try {
+    localStorage.setItem(partnershipDraftKey, JSON.stringify(draft));
+  } catch {
+    // The form remains usable when browser storage is unavailable.
+  }
+}
+
+function loadPartnershipDraft() {
+  try {
+    const draft = JSON.parse(localStorage.getItem(partnershipDraftKey) || "null");
+    if (!draft || typeof draft !== "object") return;
+    partnershipFields.forEach((field) => {
+      if (!(field.name in draft)) return;
+      if (field.type === "checkbox") field.checked = Boolean(draft[field.name]);
+      else field.value = String(draft[field.name]);
+    });
+  } catch {
+    // Ignore malformed or unavailable local draft storage.
+  }
+}
+
+function createPartnershipReference() {
+  const date = new Date().toISOString().slice(0, 10).replaceAll("-", "");
+  const random = Math.floor(1000 + Math.random() * 9000);
+  return `VG-PARTNER-${date}-${random}`;
+}
+
+function storePartnershipRequest(request) {
+  try {
+    const stored = JSON.parse(localStorage.getItem(partnershipRequestKey) || "[]");
+    const requests = Array.isArray(stored) ? stored.slice(-19) : [];
+    requests.push(request);
+    localStorage.setItem(partnershipRequestKey, JSON.stringify(requests));
+    localStorage.removeItem(partnershipDraftKey);
+  } catch {
+    // The confirmation still appears when browser storage is unavailable.
+  }
+}
+
+function setPartnershipOpen(isOpen) {
+  if (isOpen) {
+    partnershipLastFocus = document.activeElement;
+    setPartnershipView(false);
+  }
+  partnershipModal.classList.toggle("is-open", isOpen);
+  partnershipModal.setAttribute("aria-hidden", String(!isOpen));
+  document.body.classList.toggle("has-modal", isOpen);
+
+  if (isOpen) {
+    if (window.gsap) {
+      gsap.fromTo(partnershipDialog, { opacity: 0, y: 28, scale: 0.98 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "power3.out" });
+      gsap.fromTo(".partnership-points > div, .partnership-form label, .partnership-actions", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.035, delay: 0.12, ease: "power2.out" });
+    }
+    setTimeout(() => partnershipName.focus(), 160);
+  } else {
+    partnershipLastFocus?.focus?.();
+  }
+}
+
+function trapPartnershipFocus(event) {
+  if (event.key !== "Tab" || !partnershipModal.classList.contains("is-open")) return;
+  const focusable = Array.from(partnershipDialog.querySelectorAll("button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])"))
+    .filter((element) => !element.closest("[hidden]"));
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+}
+
 function animateNumber(element, target, duration = 1200) {
   const start = Number(element.textContent) || 0;
   const startTime = performance.now();
@@ -813,6 +990,254 @@ function createLoaderTextureData(label, color) {
   `;
 
   return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+}
+
+function initHeroScene() {
+  if (!window.THREE || !heroCanvas || !heroSceneElement) return null;
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 50);
+  const renderer = new THREE.WebGLRenderer({
+    canvas: heroCanvas,
+    alpha: true,
+    antialias: true,
+    powerPreference: "high-performance"
+  });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.08;
+
+  const signalSystem = new THREE.Group();
+  const coreGroup = new THREE.Group();
+  const orbitGroup = new THREE.Group();
+  const waveGroup = new THREE.Group();
+  scene.add(signalSystem);
+  signalSystem.add(coreGroup, orbitGroup, waveGroup);
+
+  const core = new THREE.Mesh(
+    new THREE.IcosahedronGeometry(1.34, 4),
+    new THREE.MeshPhysicalMaterial({
+      color: 0x7dd3fc,
+      emissive: 0x2563eb,
+      emissiveIntensity: 0.18,
+      roughness: 0.18,
+      metalness: 0.16,
+      transmission: 0.22,
+      transparent: true,
+      opacity: 0.62,
+      wireframe: true
+    })
+  );
+  const innerCore = new THREE.Mesh(
+    new THREE.IcosahedronGeometry(0.72, 2),
+    new THREE.MeshPhysicalMaterial({
+      color: 0xffffff,
+      emissive: 0x38bdf8,
+      emissiveIntensity: 0.32,
+      roughness: 0.08,
+      metalness: 0.05,
+      transmission: 0.38,
+      transparent: true,
+      opacity: 0.86
+    })
+  );
+  const coreShell = new THREE.Mesh(
+    new THREE.SphereGeometry(1.02, 36, 36),
+    new THREE.MeshBasicMaterial({
+      color: 0x2563eb,
+      transparent: true,
+      opacity: 0.055,
+      side: THREE.BackSide
+    })
+  );
+  coreGroup.add(core, innerCore, coreShell);
+
+  const orbitSpecs = [
+    [1.72, 0.018, 0x2563eb, 0.54, 0.18, 0.12],
+    [2.02, 0.012, 0x06b6d4, 0.38, Math.PI / 2.4, -0.32],
+    [2.28, 0.01, 0x10b981, 0.28, Math.PI / 2, Math.PI / 3]
+  ];
+  const orbits = orbitSpecs.map(([radius, tube, color, opacity, x, y]) => {
+    const orbit = new THREE.Mesh(
+      new THREE.TorusGeometry(radius, tube, 12, 160),
+      new THREE.MeshBasicMaterial({ color, transparent: true, opacity })
+    );
+    orbit.rotation.set(x, y, 0);
+    orbitGroup.add(orbit);
+    return orbit;
+  });
+
+  const nodeMaterial = new THREE.MeshBasicMaterial({ color: 0x2563eb, transparent: true, opacity: 0.82 });
+  const nodeGeometry = new THREE.SphereGeometry(0.055, 12, 12);
+  const nodes = Array.from({ length: 9 }, (_, index) => {
+    const angle = (index / 9) * Math.PI * 2;
+    const node = new THREE.Mesh(nodeGeometry, nodeMaterial);
+    node.position.set(Math.cos(angle) * 1.72, Math.sin(angle) * 1.72, 0);
+    orbitGroup.add(node);
+    return node;
+  });
+
+  const waveMaterial = new THREE.MeshBasicMaterial({ color: 0x2563eb, transparent: true, opacity: 0.38 });
+  const waveGeometry = new THREE.BoxGeometry(0.036, 0.34, 0.036);
+  const waveBars = Array.from({ length: 42 }, (_, index) => {
+    const bar = new THREE.Mesh(waveGeometry, waveMaterial);
+    const angle = (index / 42) * Math.PI * 2;
+    bar.position.set(Math.cos(angle) * 2.58, Math.sin(angle) * 2.58, -0.2);
+    bar.rotation.z = angle;
+    waveGroup.add(bar);
+    return bar;
+  });
+
+  const particleCount = window.innerWidth < 760 ? 90 : 180;
+  const particlePositions = new Float32Array(particleCount * 3);
+  for (let index = 0; index < particleCount; index += 1) {
+    const radius = 2.7 + Math.random() * 2.8;
+    const angle = Math.random() * Math.PI * 2;
+    particlePositions[index * 3] = Math.cos(angle) * radius;
+    particlePositions[index * 3 + 1] = (Math.random() - 0.5) * 5;
+    particlePositions[index * 3 + 2] = Math.sin(angle) * radius - 0.8;
+  }
+  const particleGeometry = new THREE.BufferGeometry();
+  particleGeometry.setAttribute("position", new THREE.BufferAttribute(particlePositions, 3));
+  const particleMaterial = new THREE.PointsMaterial({
+    color: 0x2563eb,
+    size: 0.032,
+    transparent: true,
+    opacity: 0.3,
+    depthWrite: false
+  });
+  const particles = new THREE.Points(particleGeometry, particleMaterial);
+  scene.add(particles);
+
+  scene.add(new THREE.HemisphereLight(0xffffff, 0xdbeafe, 2.2));
+  const keyLight = new THREE.PointLight(0x38bdf8, 4.2, 12);
+  keyLight.position.set(3.4, 3.2, 4.5);
+  scene.add(keyLight);
+  const rimLight = new THREE.PointLight(0x2563eb, 3.4, 10);
+  rimLight.position.set(-3.2, -1.8, 2.2);
+  scene.add(rimLight);
+
+  camera.position.set(0, 0.15, 7.8);
+  camera.lookAt(0, 0, 0);
+  const pointer = new THREE.Vector2();
+  const pointerTarget = new THREE.Vector2();
+  const hoverScaleVector = new THREE.Vector3(1, 1, 1);
+  const clock = new THREE.Clock();
+  const scrollState = { current: 0, target: 0 };
+  const raycaster = new THREE.Raycaster();
+  let coreHovered = false;
+  let visible = true;
+  let frameId = 0;
+
+  function resizeHeroScene() {
+    const width = heroSceneElement.clientWidth;
+    const height = heroSceneElement.clientHeight;
+    if (!width || !height) return;
+    renderer.setSize(width, height, false);
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+  }
+
+  function handlePointer(event) {
+    const bounds = heroSceneElement.getBoundingClientRect();
+    pointerTarget.x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
+    pointerTarget.y = -((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
+    raycaster.setFromCamera(pointerTarget, camera);
+    coreHovered = raycaster.intersectObjects([core, innerCore], false).length > 0;
+    heroSceneElement.classList.toggle("is-core-hovered", coreHovered);
+  }
+
+  function handleHeroScroll() {
+    if (reducedMotion) {
+      scrollState.target = 0;
+      return;
+    }
+    const bounds = heroSceneElement.getBoundingClientRect();
+    const travel = window.innerHeight + bounds.height;
+    scrollState.target = THREE.MathUtils.clamp((window.innerHeight - bounds.top) / travel, 0, 1);
+  }
+
+  function renderHeroScene() {
+    frameId = requestAnimationFrame(renderHeroScene);
+    if (!visible) return;
+    const elapsed = clock.getElapsedTime();
+    const motion = reducedMotion ? 0.18 : 1;
+    pointer.lerp(pointerTarget, 0.045);
+    scrollState.current = THREE.MathUtils.lerp(scrollState.current, scrollState.target, 0.055);
+    const scrollProgress = scrollState.current;
+    const hoverScale = coreHovered ? 1.08 : 1;
+
+    signalSystem.rotation.y = pointer.x * 0.24 + elapsed * 0.075 * motion + scrollProgress * 0.72;
+    signalSystem.rotation.x = pointer.y * 0.16 + Math.sin(elapsed * 0.3) * 0.035 * motion - scrollProgress * 0.28;
+    signalSystem.rotation.z = scrollProgress * -0.18;
+    signalSystem.position.y = scrollProgress * 0.58;
+    signalSystem.position.z = scrollProgress * 0.7;
+    core.rotation.x = elapsed * 0.16 * motion;
+    core.rotation.y = elapsed * 0.22 * motion;
+    innerCore.rotation.y = -elapsed * 0.34 * motion;
+    hoverScaleVector.setScalar(hoverScale);
+    core.scale.lerp(hoverScaleVector, 0.08);
+    innerCore.scale.setScalar((1 + Math.sin(elapsed * 2.2) * 0.055 * motion) * hoverScale);
+    coreShell.scale.setScalar(1 + Math.sin(elapsed * 1.5) * 0.08 * motion);
+    orbitGroup.rotation.z = elapsed * 0.08 * motion + scrollProgress * 1.12;
+    orbitGroup.scale.setScalar(1 + scrollProgress * 0.13);
+    orbits[0].rotation.z = elapsed * 0.22 * motion;
+    orbits[1].rotation.z = -elapsed * 0.18 * motion;
+    orbits[2].rotation.z = elapsed * 0.12 * motion;
+    nodes.forEach((node, index) => node.scale.setScalar(0.7 + Math.sin(elapsed * 2.4 + index) * 0.3 * motion));
+    waveBars.forEach((bar, index) => {
+      const pulse = 0.7 + Math.abs(Math.sin(elapsed * 3.2 + index * 0.38)) * 1.6 * motion;
+      bar.scale.y = pulse;
+    });
+    waveGroup.rotation.z = -elapsed * 0.055 * motion - scrollProgress * 0.9;
+    waveGroup.scale.setScalar(1 + scrollProgress * 0.2);
+    particles.rotation.y = -elapsed * 0.025 * motion;
+    particles.rotation.x = scrollProgress * 0.2;
+    particles.position.x = pointer.x * 0.16 + scrollProgress * -0.25;
+    particles.position.y = scrollProgress * -0.65;
+    camera.position.x = pointer.x * 0.22;
+    camera.position.y = 0.15 + pointer.y * 0.16 + scrollProgress * 0.36;
+    camera.position.z = 7.8 - scrollProgress * 0.65;
+    camera.lookAt(0, 0, 0);
+    renderer.render(scene, camera);
+  }
+
+  const resizeObserver = new ResizeObserver(resizeHeroScene);
+  const visibilityObserver = new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+    if (visible) clock.getDelta();
+  }, { threshold: 0.02 });
+  resizeObserver.observe(heroSceneElement);
+  visibilityObserver.observe(heroSceneElement);
+  heroSceneElement.addEventListener("pointermove", handlePointer);
+  heroSceneElement.addEventListener("pointerleave", () => {
+    pointerTarget.set(0, 0);
+    coreHovered = false;
+    heroSceneElement.classList.remove("is-core-hovered");
+  });
+  window.addEventListener("scroll", handleHeroScroll, { passive: true });
+  resizeHeroScene();
+  handleHeroScroll();
+  renderHeroScene();
+
+  return () => {
+    cancelAnimationFrame(frameId);
+    resizeObserver.disconnect();
+    visibilityObserver.disconnect();
+    heroSceneElement.removeEventListener("pointermove", handlePointer);
+    window.removeEventListener("scroll", handleHeroScroll);
+    scene.traverse((object) => {
+      if (object.geometry && object.geometry !== nodeGeometry && object.geometry !== waveGeometry) object.geometry.dispose();
+      if (object.material && ![nodeMaterial, waveMaterial].includes(object.material)) object.material.dispose();
+    });
+    nodeGeometry.dispose();
+    nodeMaterial.dispose();
+    waveGeometry.dispose();
+    waveMaterial.dispose();
+    renderer.dispose();
+  };
 }
 
 function initLoaderScene() {
@@ -1019,6 +1444,7 @@ function revealInitialContent() {
   }
 
   initPageAnimations();
+  initHeroScene();
 }
 
 function completeLoader(disposeLoaderScene) {
@@ -1192,7 +1618,53 @@ priceContactTriggers.forEach((button) => {
   });
 });
 
+partnershipTrigger.addEventListener("click", () => setPartnershipOpen(true));
+partnershipBackdrop.addEventListener("click", () => setPartnershipOpen(false));
+partnershipClose.addEventListener("click", () => setPartnershipOpen(false));
+partnershipDone.addEventListener("click", () => setPartnershipOpen(false));
+
+partnershipFields.forEach((field) => {
+  field.addEventListener("input", () => {
+    clearPartnershipError(field);
+    savePartnershipDraft();
+  });
+  field.addEventListener("change", savePartnershipDraft);
+});
+
+partnershipForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (!validatePartnershipForm()) return;
+
+  const formData = new FormData(partnershipForm);
+  const reference = createPartnershipReference();
+  const request = {
+    reference,
+    createdAt: new Date().toISOString(),
+    name: String(formData.get("name") || "").trim(),
+    email: String(formData.get("email") || "").trim(),
+    company: String(formData.get("company") || "").trim(),
+    role: String(formData.get("role") || "").trim(),
+    need: String(formData.get("need") || ""),
+    message: String(formData.get("message") || "").trim()
+  };
+
+  storePartnershipRequest(request);
+  partnershipReference.textContent = reference;
+  partnershipForm.reset();
+  setPartnershipView(true);
+  partnershipDone.focus();
+
+  if (window.gsap) {
+    gsap.fromTo(partnershipSuccess, { opacity: 0, y: 20, scale: 0.98 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "power3.out" });
+  }
+});
+
 document.addEventListener("keydown", (event) => {
+  trapPartnershipFocus(event);
+  if (event.key === "Escape" && partnershipModal.classList.contains("is-open")) {
+    setPartnershipOpen(false);
+    return;
+  }
   if (event.key === "Escape" && supportWidget.classList.contains("is-open")) {
     setSupportOpen(false, { focus: false });
     supportLauncher.focus();
@@ -1204,6 +1676,7 @@ document.addEventListener("click", (event) => {
   setSupportOpen(false, { focus: false });
 });
 
+loadPartnershipDraft();
 loadSupportHistory();
 setLanguage(activeLanguage);
 
@@ -1251,6 +1724,119 @@ function initPageAnimations() {
 
     document.querySelectorAll(".risk-number[data-target]").forEach((item) => {
       animateNumber(item, Number(item.dataset.target), 1500);
+    });
+
+    const parallaxMedia = gsap.matchMedia();
+    parallaxMedia.add("(min-width: 761px) and (prefers-reduced-motion: no-preference)", () => {
+      gsap.to(".ambient-one", {
+        xPercent: 24,
+        yPercent: 52,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".page-shell",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1.2
+        }
+      });
+
+      gsap.to(".ambient-two", {
+        xPercent: -30,
+        yPercent: -42,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".page-shell",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1.4
+        }
+      });
+
+      gsap.to(".hero-copy", {
+        y: 110,
+        opacity: 0.34,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.8
+        }
+      });
+
+      gsap.to(".hero-scene", {
+        y: -72,
+        scale: 0.96,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.8
+        }
+      });
+
+      gsap.to(".hero-scene-status, .hero-scene-hint", {
+        y: -30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.7
+        }
+      });
+
+      gsap.to(".hero-scene-signals, .hero-scene-challenge", {
+        y: 38,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.9
+        }
+      });
+
+      gsap.utils.toArray(".wide-heading, .flow-copy, .demo-heading, .comparison-copy, .privacy-copy, .pricing-heading").forEach((copy, index) => {
+        gsap.fromTo(copy, { y: 42 + (index % 2) * 14 }, {
+          y: -34,
+          ease: "none",
+          scrollTrigger: {
+            trigger: copy,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1
+          }
+        });
+      });
+
+      gsap.utils.toArray(".card-image, .privacy-art, .architecture-diagram, .demo-console").forEach((visual, index) => {
+        gsap.fromTo(visual, { y: index % 2 ? 38 : 58 }, {
+          y: index % 2 ? -28 : -46,
+          ease: "none",
+          scrollTrigger: {
+            trigger: visual,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1.1
+          }
+        });
+      });
+
+      gsap.utils.toArray(".bento-card").forEach((card, index) => {
+        const travel = index % 2 === 0 ? -24 : 24;
+        gsap.to(card, {
+          y: travel,
+          ease: "none",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 88%",
+            end: "bottom 12%",
+            scrub: 0.9
+          }
+        });
+      });
     });
 
     gsap.to(".pin-copy", {
